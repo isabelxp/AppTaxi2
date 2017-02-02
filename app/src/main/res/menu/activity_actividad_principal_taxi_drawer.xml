@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/calculator"
+            android:title="Tabulador de Precios" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/buzon"
+            android:title="Mensajes y promociones" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/destinos"
+            android:title="Destinos Favoritos" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/conductor"
+            android:title="Conductores Favoritos" />
+        <item
+            android:id="@+id/billetera"
+            android:icon="@drawable/cartera"
+            android:title="Billetera Electronica" />
+        <item
+            android:id="@+id/historial"
+            android:icon="@drawable/historial"
+            android:title="Mi historial de viajes" />
+        <item
+            android:id="@+id/reservas"
+            android:icon="@drawable/acerca"
+            android:title="Reservas de viajes" />
+        <item
+            android:id="@+id/acerca"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Acerca de..." />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/salir"
+                android:title="Salir" />
+        </menu>
+    </item>
+
+</menu>

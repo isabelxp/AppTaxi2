@@ -1,0 +1,86 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:layout_marginTop="10dp"
+    tools:context="com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioUno">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/ic_arrow_forward"
+        app:backgroundTint="@android:color/black"
+        app:layout_anchor="@+id/include"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        app:layout_anchorGravity="bottom|right"
+        android:layout_gravity="bottom|right"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text=""
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinner"
+            android:textSize="14dp"
+            android:layout_alignStart="@+id/textNombre"
+            android:layout_marginTop="25dp"
+            android:id="@+id/textView3" />
+
+        <TextView
+            android:text="Por favor introduce tu numero de Cedula de identidad."
+            android:textSize="18dp"
+            android:textColor="@android:color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="66dp"
+            android:id="@+id/textNombre"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="23dp" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/editCedula"
+            android:layout_below="@+id/textNombre"
+            android:layout_marginTop="9dp"
+            android:id="@+id/spinner"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textColor="@android:color/black"
+            android:text=""
+            android:ems="10"
+            android:drawableRight="@drawable/ic_close"
+            android:layout_marginEnd="34dp"
+            android:id="@+id/editCedula"
+            android:layout_below="@+id/textNombre"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:text="ir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="124dp"
+            android:id="@+id/buttonIr" />
+
+
+    </RelativeLayout>
+
+</FrameLayout>

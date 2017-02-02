@@ -1,0 +1,82 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="8dp"
+    tools:context="com.example.joseris.apptaxi.FragmentsApp.FragmentParteBusquedaMapa">
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+
+       <Button
+           android:text="Confirmar"
+           android:background="@android:color/black"
+           android:textColor="@android:color/white"
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:id="@+id/button2"
+           android:layout_alignParentBottom="true"
+           android:layout_alignParentStart="true" />
+
+       <Button
+           android:text="Efectivo"
+           android:textSize="12dp"
+           android:background="@android:color/white"
+           android:layout_width="220dp"
+           android:layout_height="50dp"
+           android:layout_marginBottom="4dp"
+           android:id="@+id/button3"
+           android:drawableLeft="@drawable/ic_money"
+           android:layout_above="@+id/button2"
+           android:layout_alignParentStart="true" />
+
+       <Button
+           android:background="@android:color/white"
+           android:textSize="12dp"
+           android:text="opciones"
+           android:drawableLeft="@drawable/ic_opc"
+           android:layout_width="120dp"
+           android:layout_height="50dp"
+           android:id="@+id/button4"
+           android:layout_marginBottom="4dp"
+           android:layout_alignBaseline="@+id/button3"
+           android:layout_alignBottom="@+id/button3"
+           android:layout_alignParentEnd="true" />
+
+       <EditText
+           android:background="@android:color/white"
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:layout_marginBottom="4dp"
+           android:textColor="@android:color/black"
+           android:text="   TARIFA TOTAL"
+           android:inputType="none"
+           android:ems="10"
+           android:editable="false"
+           android:drawableRight="@drawable/icon_bs"
+           android:layout_above="@+id/button3"
+           android:layout_centerHorizontal="true"
+           android:id="@+id/editText" />
+
+       <EditText
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:inputType="textPersonName"
+           android:elevation="5dp"
+           android:drawableRight="@drawable/ic_timee"
+           android:background="@android:color/white"
+           android:text="      ¿A donde quieres ir?"
+           android:drawableLeft="@drawable/ic_ubicacion"
+           android:ems="10"
+           android:layout_marginTop="66dp"
+           android:id="@+id/editText3"
+           android:layout_alignParentTop="true"
+           android:layout_alignParentStart="true" />
+
+
+   </RelativeLayout>
+
+</FrameLayout>
