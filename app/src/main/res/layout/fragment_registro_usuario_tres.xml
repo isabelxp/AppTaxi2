@@ -92,35 +92,17 @@
                 android:layout_alignStart="@+id/editText6" />
         </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:text="             Numero de celular"
-            android:textSize="15dp"
-            android:textColor="@android:color/black"
+
+        <com.digits.sdk.android.DigitsAuthButton
+            android:id="@+id/auth_button"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@android:color/black"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView9"
+            android:layout_height="50dp"
             android:layout_below="@+id/input_layout_password"
-            android:layout_alignParentStart="true" />
-
-        <EditText
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_close"
-            android:inputType="number"
-            android:ems="10"
-            android:textColor="@android:color/black"
-            android:id="@+id/editText8"
-            android:layout_below="@+id/textView9"
-            android:layout_alignStart="@+id/textView8" />
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="30dp"
-            android:background="@drawable/venezuela"
-            android:id="@+id/imageView3"
-            android:layout_alignBottom="@+id/spinner2"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="25dp" />
+            android:layout_marginTop="14dp" />
 
         <TextView
             android:text="SUBIR FOTOGRAFIA USUARIO"
@@ -132,10 +114,11 @@
             android:id="@+id/textView8"
             android:fontFamily="monospace"
             android:layout_alignTop="@+id/imageView2"
-            android:layout_toEndOf="@+id/imageView3"
-            android:layout_marginStart="61dp" />
+            android:layout_alignEnd="@+id/auth_button"
+            android:layout_marginEnd="53dp" />
 
 
     </RelativeLayout>
+
 
 </FrameLayout>

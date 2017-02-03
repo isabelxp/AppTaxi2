@@ -46,6 +46,7 @@
             android:name=".FragmnetsRegistroUsuario.Actividad_principalTaxi"
             android:label="@string/title_activity_actividad_principal_taxi"
             android:theme="@style/AppTheme" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -55,8 +56,9 @@
              You can define the keys for the debug and release targets in src/debug/ and src/release/. 
         -->
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBM9RQOkyAjXFl4h0yHNixtKLt8LVJkwUI" />
+            android:name="io.fabric.ApiKey"
+            android:value="b5448395b8700d36823f61cc6f74c065dfff09e4"
+            />
 
     </application>
 
