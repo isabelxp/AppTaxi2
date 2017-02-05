@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -43,6 +45,7 @@ public class RegistroUsuarioUno extends Fragment {
     TextView nombre;
     EditText cedula;
     Button ir;
+    ImageView x;
     private ProgressDialog loading;
     Spinner opcionesNacionalidad;
     public RegistroUsuarioUno() {
@@ -58,7 +61,41 @@ public class RegistroUsuarioUno extends Fragment {
         FloatingActionButton botonchck=(FloatingActionButton) v.findViewById(fab);
         nombre=(TextView) v.findViewById(R.id.textView3);
         cedula=(EditText) v.findViewById(R.id.editCedula);
+        x=(ImageView) v.findViewById(R.id.imagviewX);
         ir=(Button) v.findViewById(R.id.buttonIr);
+
+
+        cedula.addTextChangedListener(new TextWatcher() {
+            public void afterTextChanged(Editable s) {
+
+            }
+
+            public void beforeTextChanged(CharSequence s,
+                                          int start, int count, int after) {
+
+
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                     if(cedula.getText().toString().isEmpty()==false)
+                     {
+                         x.setVisibility(View.VISIBLE);
+                     }else
+                         x.setVisibility(View.INVISIBLE);
+
+                }
+            });
+
+
+        x.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               cedula.setText("");
+            }
+        });
+
+
+
 
         ir.setOnClickListener(new View.OnClickListener() {
             @Override

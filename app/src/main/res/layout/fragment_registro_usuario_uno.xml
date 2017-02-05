@@ -52,6 +52,8 @@
             android:layout_toRightOf="@+id/editCedula"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/imagviewX"
+            android:visibility="invisible"
             android:background="@drawable/ic_close"/>
 
         <Button
