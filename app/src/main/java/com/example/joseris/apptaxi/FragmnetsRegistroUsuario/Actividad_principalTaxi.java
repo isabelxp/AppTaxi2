@@ -1,14 +1,17 @@
 package com.example.joseris.apptaxi.FragmnetsRegistroUsuario;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +24,9 @@ import android.view.MenuItem;
 
 import com.example.joseris.apptaxi.FragmentsApp.FragmentParteBusquedaMapa;
 import com.example.joseris.apptaxi.R;
+import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder;
+import com.github.rubensousa.bottomsheetbuilder.BottomSheetMenuDialog;
+import com.github.rubensousa.bottomsheetbuilder.adapter.BottomSheetItemClickListener;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -37,6 +43,9 @@ public class Actividad_principalTaxi extends AppCompatActivity
     private Marker marcador;
     double lat = 0.0;
     double lng = 0.0;
+    private BottomSheetMenuDialog mBottomSheetDialog;
+    private BottomSheetBehavior mBehavior;
+    private boolean mShowingHeaderDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +130,56 @@ public class Actividad_principalTaxi extends AppCompatActivity
         return true;
     }
 
+    public void onShowOpcionesdepago() {
+        if (mBottomSheetDialog != null) {
+            mBottomSheetDialog.dismiss();
+        }
+        mShowingHeaderDialog = true;
+        mBottomSheetDialog = new BottomSheetBuilder(this, R.style.AppTheme_BottomSheetDialog_Custom)
+                .setMode(BottomSheetBuilder.MODE_LIST)
+                .setMenu(R.menu.menu_bottom_opciones_pagost)
+                .expandOnStart(true)
+                .setItemClickListener(new BottomSheetItemClickListener() {
+                    @Override
+                    public void onBottomSheetItemClick(MenuItem item) {
+                        Log.d("Item click", item.getTitle() + "");
+                        mShowingHeaderDialog = false;
+                    }
+                })
+                .createDialog();
+        mBottomSheetDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                mShowingHeaderDialog = false;
+            }
+        });
+        mBottomSheetDialog.show();
+    }
+    public void onShowOpciones() {
+        if (mBottomSheetDialog != null) {
+            mBottomSheetDialog.dismiss();
+        }
+        mShowingHeaderDialog = true;
+        mBottomSheetDialog = new BottomSheetBuilder(this, R.style.AppTheme_BottomSheetDialog_Custom)
+                .setMode(BottomSheetBuilder.MODE_LIST)
+                .setMenu(R.menu.menu_opciones)
+                .expandOnStart(true)
+                .setItemClickListener(new BottomSheetItemClickListener() {
+                    @Override
+                    public void onBottomSheetItemClick(MenuItem item) {
+                        Log.d("Item click", item.getTitle() + "");
+                        mShowingHeaderDialog = false;
+                    }
+                })
+                .createDialog();
+        mBottomSheetDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                mShowingHeaderDialog = false;
+            }
+        });
+        mBottomSheetDialog.show();
+    }
     public void Agregar_Marcador(double lat, double lng) {
 
         LatLng coordenadas = new LatLng(lat, lng);

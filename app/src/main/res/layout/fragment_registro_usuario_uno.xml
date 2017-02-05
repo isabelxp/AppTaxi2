@@ -11,7 +11,7 @@
         android:id="@+id/fab"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:srcCompat="@drawable/ic_arrow_forward"
+        app:srcCompat="@drawable/ic_checkflecha"
         app:backgroundTint="@android:color/black"
         app:layout_anchor="@+id/include"
         android:layout_marginRight="30dp"
@@ -25,17 +25,6 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_height="match_parent">
-
-        <TextView
-            android:text=""
-            android:textColor="@android:color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/spinner"
-            android:textSize="14dp"
-            android:layout_alignStart="@+id/textNombre"
-            android:layout_marginTop="25dp"
-            android:id="@+id/textView3" />
 
         <TextView
             android:text="Por favor introduce tu numero de Cedula de identidad."
@@ -58,27 +47,47 @@
             android:id="@+id/spinner"
             />
 
-        <EditText
+        <ImageView
+            android:layout_below="@+id/textNombre"
+            android:layout_toRightOf="@+id/editCedula"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/ic_close"/>
+
+        <Button
+            android:text=""
+            android:layout_width="50dp"
+            android:elevation="8dp"
+            android:shadowDy="6"
+            android:shadowRadius="1.2"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_checkic"
+            android:id="@+id/buttonIr"
+            android:layout_marginTop="58dp"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text=""
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/editCedula"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="19dp" />
+
+        <EditText
+            android:layout_height="wrap_content"
             android:inputType="number"
+            android:layout_width="230dp"
             android:textColor="@android:color/black"
             android:text=""
             android:ems="10"
-            android:drawableRight="@drawable/ic_close"
-            android:layout_marginEnd="34dp"
             android:id="@+id/editCedula"
             android:layout_below="@+id/textNombre"
-            android:layout_alignParentEnd="true" />
-
-        <Button
-            android:text="ir"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView3"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="124dp"
-            android:id="@+id/buttonIr" />
+            android:layout_centerHorizontal="true" />
 
 
     </RelativeLayout>

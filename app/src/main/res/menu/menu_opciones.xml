@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="                              OPCIONES  ">
+        <menu>
+            <item
+
+                android:title="Pasajeros" />
+            <item
+                android:icon="@drawable/ic_botondoble"
+                android:title="" />
+        </menu>
+    </item>
+
+
+    <item android:title="Conductores Favoritos">
+        <menu>
+            <item
+                android:title="Enviar solicitud solo a Conductores Favoritos" />
+        </menu>
+    </item>
+    <item android:title="Tipo de servicio">
+        <menu>
+            <item
+                android:icon="@drawable/ic_car_icon_yellow"
+                android:title="Servicio Estandar" />
+            <item
+                android:icon="@drawable/ic_car_icon_gray"
+                android:title="Servicio Primium" />
+        </menu>
+    </item>
+    <item android:title="Opciones de vehiculo">
+        <menu>
+            <item
+                android:icon="@drawable/ic_briefcase"
+                android:title="Maletero amplio" />
+            <item
+                android:icon="@drawable/ic_dog"
+                android:title="Permitir mascota" />
+        </menu>
+    </item>
+</menu>

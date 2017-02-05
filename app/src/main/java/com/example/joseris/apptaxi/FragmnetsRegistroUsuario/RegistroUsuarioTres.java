@@ -3,6 +3,7 @@ package com.example.joseris.apptaxi.FragmnetsRegistroUsuario;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,29 +18,49 @@ import com.digits.sdk.android.DigitsAuthButton;
 import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsSession;
 import com.example.joseris.apptaxi.R;
+import com.example.joseris.apptaxi.RegistroUsuario;
+import com.example.joseris.apptaxi.Servicios.ServRegistroUsuario;
+import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterCore;
 
 import io.fabric.sdk.android.Fabric;
+
+import static com.example.joseris.apptaxi.R.id.fab;
 
 
 public class RegistroUsuarioTres extends Fragment {
     private static final String TWITTER_KEY = "Mdz9xqqz77fcDahuZzF7mIB4m";
     private static final String TWITTER_SECRET = "1DXHn1iRkhqHCQXXoAD4EqkI5hJKaanTk2cPUGTA8vHv2MnSa2";
     TextView TextFoto;
+    ServRegistroUsuario registro=new ServRegistroUsuario();
+
+
+
+
     public RegistroUsuarioTres() {
-        // Required empty public constructor
+
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
-        //Fabric.with(this, new TwitterCore(authConfig), new Digits.Builder().build());
         Digits.Builder digitsBuilder = new Digits.Builder().withTheme(R.style.CustomDigitsTheme);
         Fabric.with(getContext(), new TwitterCore(authConfig), digitsBuilder.build());
         View v= inflater.inflate(R.layout.fragment_registro_usuario_tres, container, false);
+
+
+
+
+        FloatingActionButton botonchck=(FloatingActionButton) v.findViewById(fab);
+
+        botonchck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registro.Registrar_usurario("isabel.indriago23@gmail.com","Joseris","0412",25274878,"1","pasajero");
+            }
+        });
+
 
 
         DigitsAuthButton digitsButton = (DigitsAuthButton) v.findViewById(R.id.auth_button);

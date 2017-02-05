@@ -7,12 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.Actividad_principalTaxi;
 import com.example.joseris.apptaxi.R;
 
 
 public class FragmentParteBusquedaMapa extends Fragment {
-
+    Button opciones;
+    Button opcionesdepago;
     public FragmentParteBusquedaMapa() {
 
     }
@@ -30,7 +33,25 @@ public class FragmentParteBusquedaMapa extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_fragment_parte_busqueda_mapa, container, false);
+        View v=inflater.inflate(R.layout.fragment_fragment_parte_busqueda_mapa, container, false);
+        opciones=(Button) v.findViewById(R.id.buttonopciones);
+        opcionesdepago=(Button) v.findViewById(R.id.buttonefectivo);
+
+        opciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ((Actividad_principalTaxi)getActivity()).onShowOpciones();
+            }
+        });
+        opcionesdepago.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((Actividad_principalTaxi)getActivity()).onShowOpcionesdepago();
+            }
+        });
+
+        return v;
     }
 
 

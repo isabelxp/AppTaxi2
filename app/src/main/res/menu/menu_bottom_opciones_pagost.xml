@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="                     OPCIONES DE PAGO ">
+        <menu>
+            <item
+                android:icon="@drawable/ic_money"
+                android:title="Efectivo" />
+            <item
+                android:icon="@drawable/ic_monedas"
+                android:title="Creditos" />
+
+        </menu>
+    </item>
+
+
+    <item android:title="Mis tarjetas">
+        <menu>
+            <item
+                android:icon="@drawable/ic_visa"
+                android:title="Terminada en 7808" />
+            <item
+                android:icon="@drawable/ic_mastercard"
+                android:title="Terminada en 8405" />
+        </menu>
+    </item>
+    <item android:title="Promociones">
+        <menu>
+            <item android:title="Agregar un codigo promo/de regalo" />
+        </menu>
+    </item>
+
+
+</menu>
