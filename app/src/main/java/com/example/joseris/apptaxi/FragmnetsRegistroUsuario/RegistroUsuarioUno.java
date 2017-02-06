@@ -90,7 +90,8 @@ public class RegistroUsuarioUno extends Fragment {
         x.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               cedula.setText("");
+                nombre.setText("");
+                cedula.setText("");
             }
         });
 
