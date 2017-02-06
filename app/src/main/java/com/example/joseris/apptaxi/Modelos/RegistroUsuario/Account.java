@@ -1,5 +1,5 @@
 
-package com.example.joseris.apptaxi.ClasesBasedeDatos;
+package com.example.joseris.apptaxi.Modelos.RegistroUsuario;
 
 
 public class Account {
@@ -12,9 +12,10 @@ public class Account {
     private String role;
     private String lastLogin;
     private String registrationDate;
-    private Integer photo;
     private String email;
+    private Integer photo;
     private Integer id;
+    private Integer ciPhoto;
 
     public String getCi() {
         return ci;
@@ -80,14 +81,6 @@ public class Account {
         this.registrationDate = registrationDate;
     }
 
-    public Integer getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(Integer photo) {
-        this.photo = photo;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -96,12 +89,28 @@ public class Account {
         this.email = email;
     }
 
+    public Integer getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Integer photo) {
+        this.photo = photo;
+    }
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getCiPhoto() {
+        return ciPhoto;
+    }
+
+    public void setCiPhoto(Integer ciPhoto) {
+        this.ciPhoto = ciPhoto;
     }
 
 }

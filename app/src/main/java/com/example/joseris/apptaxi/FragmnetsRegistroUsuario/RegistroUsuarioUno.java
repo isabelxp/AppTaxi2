@@ -82,7 +82,6 @@ public class RegistroUsuarioUno extends Fragment {
                          x.setVisibility(View.VISIBLE);
                      }else
                          x.setVisibility(View.INVISIBLE);
-
                 }
             });
 

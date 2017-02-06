@@ -1,10 +1,7 @@
 package com.example.joseris.apptaxi.Servicios;
 
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.joseris.apptaxi.ClasesBasedeDatos.Account;
-import com.example.joseris.apptaxi.ClasesBasedeDatos.RegistroUsuarioDatos;
 import com.example.joseris.apptaxi.Interfaces.RegistroUsuario;
 
 import retrofit2.Call;

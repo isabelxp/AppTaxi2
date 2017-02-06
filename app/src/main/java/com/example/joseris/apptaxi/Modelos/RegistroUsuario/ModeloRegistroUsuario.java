@@ -1,8 +1,8 @@
 
-package com.example.joseris.apptaxi.ClasesBasedeDatos;
+package com.example.joseris.apptaxi.Modelos.RegistroUsuario;
 
 
-public class RegistroUsuarioDatos {
+public class ModeloRegistroUsuario {
 
     private String success;
     private Account account;
