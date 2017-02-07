@@ -1,11 +1,11 @@
 
-package com.example.joseris.apptaxi.Modelos.RegistroUsuario;
-
+package com.example.joseris.apptaxi.Modelos;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Account {
+
     @SerializedName("ci")
     @Expose
     private String ci;
@@ -15,19 +15,19 @@ public class Account {
     @SerializedName("phone")
     @Expose
     private String phone;
-    @SerializedName("inCne")
+    @SerializedName("in_cne")
     @Expose
     private String inCne;
-    @SerializedName("isActive")
+    @SerializedName("is_active")
     @Expose
     private Integer isActive;
     @SerializedName("role")
     @Expose
     private String role;
-    @SerializedName("lastLogin")
+    @SerializedName("last_login")
     @Expose
     private String lastLogin;
-    @SerializedName("registrationDate")
+    @SerializedName("registration_date")
     @Expose
     private String registrationDate;
     @SerializedName("email")
@@ -39,9 +39,24 @@ public class Account {
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("ciPhoto")
+    @SerializedName("ci_photo")
     @Expose
     private Integer ciPhoto;
+
+    public Account(String name, String ci, String phone, String inCne, Integer isActive, String role, String lastLogin, String registrationDate, String email, Integer photo, Integer ciPhoto, Integer id) {
+        this.name = name;
+        this.ci = ci;
+        this.phone = phone;
+        this.inCne = inCne;
+        this.isActive = isActive;
+        this.role = role;
+        this.lastLogin = lastLogin;
+        this.registrationDate = registrationDate;
+        this.email = email;
+        this.photo = photo;
+        this.ciPhoto = ciPhoto;
+        this.id = id;
+    }
 
     public String getCi() {
         return ci;

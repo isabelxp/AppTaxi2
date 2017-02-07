@@ -1,10 +1,16 @@
 
-package com.example.joseris.apptaxi.Modelos.RegistroUsuario;
+package com.example.joseris.apptaxi.Modelos;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-public class ModeloRegistroUsuario {
+public class RegistroUsuarioModelo {
 
+    @SerializedName("success")
+    @Expose
     private String success;
+    @SerializedName("account")
+    @Expose
     private Account account;
 
     public String getSuccess() {
