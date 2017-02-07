@@ -1,14 +1,18 @@
+package com.example.joseris.apptaxi.Modelos.Request;
 
-package com.example.joseris.apptaxi.Modelos;
-
+/**
+ * Created by hector on 06/02/17.
+ */
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Account {
-
+public class RequestCrearUsuario {
     @SerializedName("ci")
     @Expose
     private String ci;
+    @SerializedName("password")
+    @Expose
+    private String password;
     @SerializedName("name")
     @Expose
     private String name;
@@ -17,31 +21,34 @@ public class Account {
     private String phone;
     @SerializedName("in_cne")
     @Expose
-    private String inCne;
-    @SerializedName("is_active")
-    @Expose
-    private Integer isActive;
-    @SerializedName("role")
-    @Expose
-    private String role;
-    @SerializedName("last_login")
-    @Expose
-    private String lastLogin;
-    @SerializedName("registration_date")
-    @Expose
-    private String registrationDate;
+    private Integer inCne;
     @SerializedName("email")
     @Expose
     private String email;
+    @SerializedName("role")
+    @Expose
+    private String role;
     @SerializedName("photo")
     @Expose
     private Integer photo;
-    @SerializedName("id")
-    @Expose
-    private Integer id;
     @SerializedName("ci_photo")
     @Expose
     private Integer ciPhoto;
+
+    public RequestCrearUsuario() {
+    }
+
+    public RequestCrearUsuario(String ci, String password, String name, String phone, Integer inCne, String email, String role, Integer photo, Integer ciPhoto) {
+        this.ci = ci;
+        this.password = password;
+        this.name = name;
+        this.phone = phone;
+        this.inCne = inCne;
+        this.email = email;
+        this.role = role;
+        this.photo = photo;
+        this.ciPhoto = ciPhoto;
+    }
 
     public String getCi() {
         return ci;
@@ -49,6 +56,14 @@ public class Account {
 
     public void setCi(String ci) {
         this.ci = ci;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -67,44 +82,12 @@ public class Account {
         this.phone = phone;
     }
 
-    public String getInCne() {
+    public Integer getInCne() {
         return inCne;
     }
 
-    public void setInCne(String inCne) {
+    public void setInCne(Integer inCne) {
         this.inCne = inCne;
-    }
-
-    public Integer getIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(Integer isActive) {
-        this.isActive = isActive;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getLastLogin() {
-        return lastLogin;
-    }
-
-    public void setLastLogin(String lastLogin) {
-        this.lastLogin = lastLogin;
-    }
-
-    public String getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(String registrationDate) {
-        this.registrationDate = registrationDate;
     }
 
     public String getEmail() {
@@ -115,20 +98,20 @@ public class Account {
         this.email = email;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public Integer getPhoto() {
         return photo;
     }
 
     public void setPhoto(Integer photo) {
         this.photo = photo;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Integer getCiPhoto() {

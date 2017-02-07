@@ -17,10 +17,9 @@ import com.digits.sdk.android.Digits;
 import com.digits.sdk.android.DigitsAuthButton;
 import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsSession;
+import com.example.joseris.apptaxi.Modelos.Request.RequestCrearUsuario;
 import com.example.joseris.apptaxi.R;
-import com.example.joseris.apptaxi.RegistroUsuario;
 import com.example.joseris.apptaxi.Servicios.ServRegistroUsuario;
-import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterCore;
 
@@ -57,7 +56,9 @@ public class RegistroUsuarioTres extends Fragment {
         botonchck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registro.Registrar_usurario("isabel.indriago23@gmail.com","Joseris","0412",25274878,"1","pasajero",1, "sdf" ,"2017-02-06", 4545, 45454);
+                ServRegistroUsuario registro=new ServRegistroUsuario();
+                RequestCrearUsuario requestCrearUsuario = new RequestCrearUsuario("V21221","1234","Isa","4142112",1,"isa@g.com","pasajero",null,null);
+                registro.registrarUsuario(requestCrearUsuario);
             }
         });
 

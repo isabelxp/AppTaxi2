@@ -1,11 +1,10 @@
 package com.example.joseris.apptaxi.Interfaces;
 
-import com.example.joseris.apptaxi.Modelos.RegistroUsuario.ModeloRegistroUsuario;
+import com.example.joseris.apptaxi.Modelos.Request.RequestCrearUsuario;
+import com.example.joseris.apptaxi.Modelos.Responses.ResponseRegistroUsuario;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 /**
@@ -13,23 +12,9 @@ import retrofit2.http.POST;
  */
 
 public interface RegistroUsuario {
-    @FormUrlEncoded
-    @POST("register")
-    Call<ModeloRegistroUsuario> registroUsuario(@Field("ci") String ci,
-                                                @Field("name") String name,
-                                                @Field("phone") String phone,
-                                                @Field("in_cne") String inCne,
-                                                @Field("isActive") int isActive,
-                                                @Field("role") String role,
-                                                @Field("last_login") String lastLogin,
-                                                @Field("registration_date") String registrationDate,
-                                                @Field("email") String email,
-                                                @Field("photo") int photo,
-                                                @Field("ciPhoto") int ciPhoto);
-
 
     @POST("register")
-    Call<ModeloRegistroUsuario> registroUsuario(@Body RequestCrearUsuario request);
+    Call<ResponseRegistroUsuario> registroUsuario(@Body RequestCrearUsuario request);
 
 }
 
