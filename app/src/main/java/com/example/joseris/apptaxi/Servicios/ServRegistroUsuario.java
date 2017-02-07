@@ -3,7 +3,7 @@ package com.example.joseris.apptaxi.Servicios;
 import android.util.Log;
 
 import com.example.joseris.apptaxi.Interfaces.RegistroUsuario;
-import com.example.joseris.apptaxi.Modelos.Account;
+import com.example.joseris.apptaxi.Modelos.RegistroUsuario.ModeloRegistroUsuario;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,21 +25,22 @@ public class ServRegistroUsuario {
                 .build();
 
         RegistroUsuario service=retrofit.create(RegistroUsuario.class);
-        Account acont=new Account("v25275254","joseris","0412","1",1,"pasajero", "1", "06" ,"isabel_indriago23@hotmail.com",15,33, 14);
-        Call<Account> call=service.RegistroUsuario(acont);
-        call.enqueue(new Callback<Account>() {
+
+        Call<ModeloRegistroUsuario> call=service.registroUsuario("v25274878","joseris","0412","1",1,"pasajero", "1", "06" ,"isabel.indriago23@gmail.com",1, 1);
+        call.enqueue(new Callback<ModeloRegistroUsuario>() {
             @Override
-            public void onResponse(Call<Account> call, Response<Account> response) {
+            public void onResponse(Call<ModeloRegistroUsuario> call, Response<ModeloRegistroUsuario> response) {
                 if (response.isSuccessful()) {
                     Log.e("Registro", ":" + call.request().url().toString());
                 }else
                 {
-                   Log.e("No Registro", "------" );
+                   Log.e("No Registro", "------");
+
                 }
             }
 
             @Override
-            public void onFailure(Call<Account> call, Throwable t) {
+            public void onFailure(Call<ModeloRegistroUsuario> call, Throwable t) {
                 Log.e("Error base datos", "------"+ t);
             }
         });
