@@ -2,19 +2,45 @@
 package com.example.joseris.apptaxi.Modelos.RegistroUsuario;
 
 
-public class Account {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
+public class Account {
+    @SerializedName("ci")
+    @Expose
     private String ci;
+    @SerializedName("name")
+    @Expose
     private String name;
+    @SerializedName("phone")
+    @Expose
     private String phone;
+    @SerializedName("inCne")
+    @Expose
     private String inCne;
+    @SerializedName("isActive")
+    @Expose
     private Integer isActive;
+    @SerializedName("role")
+    @Expose
     private String role;
+    @SerializedName("lastLogin")
+    @Expose
     private String lastLogin;
+    @SerializedName("registrationDate")
+    @Expose
     private String registrationDate;
+    @SerializedName("email")
+    @Expose
     private String email;
+    @SerializedName("photo")
+    @Expose
     private Integer photo;
+    @SerializedName("id")
+    @Expose
     private Integer id;
+    @SerializedName("ciPhoto")
+    @Expose
     private Integer ciPhoto;
 
     public String getCi() {

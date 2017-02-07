@@ -1,5 +1,7 @@
 package com.example.joseris.apptaxi.Interfaces;
 
+import com.example.joseris.apptaxi.Modelos.RegistroUsuario.Account;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -11,12 +13,18 @@ import retrofit2.http.POST;
 
 public interface RegistroUsuario {
     @FormUrlEncoded
-    @POST("api/register")
-    Call<Account> RegistroUsuario(@Field("email") String email,
+    @POST("register")
+    Call<Account> RegistroUsuario(@Field("ci") String ci,
                                   @Field("name") String name,
                                   @Field("phone") String phone,
-                                  @Field("ci") int ci,
                                   @Field("inCne") String inCne,
-                                  @Field("role") String role);
+                                  @Field("isActive") int isActive,
+                                  @Field("role") String role,
+                                  @Field("lastLogin") String lastLogin,
+                                  @Field("registrationDate") String registrationDate,
+                                  @Field("email") String email,
+                                  @Field("photo") int photo,
+                                  @Field("ciPhoto") int ciPhoto);
+
 }
 

@@ -57,7 +57,7 @@ public class RegistroUsuarioTres extends Fragment {
         botonchck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registro.Registrar_usurario("isabel.indriago23@gmail.com","Joseris","0412",25274878,"1","pasajero");
+                registro.Registrar_usurario("isabel.indriago23@gmail.com","Joseris","0412",25274878,"1","pasajero",1, "sdf" ,"2017-02-06", 4545, 45454);
             }
         });
 
