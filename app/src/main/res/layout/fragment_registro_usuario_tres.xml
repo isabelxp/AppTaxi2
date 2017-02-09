@@ -31,6 +31,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="62dp"
+            android:scaleType="fitXY"
             android:id="@+id/imageView2" />
         <LinearLayout
             android:layout_below="@id/imageView2"
@@ -93,16 +94,7 @@
         </android.support.design.widget.TextInputLayout>
 
 
-        <com.digits.sdk.android.DigitsAuthButton
-            android:id="@+id/auth_button"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:backgroundTint="@android:color/black"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/input_layout_password"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="14dp" />
+
 
         <TextView
             android:text="SUBIR FOTOGRAFIA USUARIO"

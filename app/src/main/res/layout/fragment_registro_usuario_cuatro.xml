@@ -4,10 +4,16 @@
     android:layout_height="match_parent"
     tools:context="com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioCuatro">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.digits.sdk.android.DigitsAuthButton
+        android:id="@+id/auth_button"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="50dp"
+        android:layout_below="@+id/input_layout_password"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="14dp" />
+
 
 </FrameLayout>
