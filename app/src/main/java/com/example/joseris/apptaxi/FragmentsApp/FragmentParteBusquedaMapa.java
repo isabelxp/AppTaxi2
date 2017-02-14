@@ -1,7 +1,5 @@
 package com.example.joseris.apptaxi.FragmentsApp;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,11 +14,10 @@ import com.example.joseris.apptaxi.R;
 public class FragmentParteBusquedaMapa extends Fragment {
     Button opciones;
     Button opcionesdepago;
+
     public FragmentParteBusquedaMapa() {
 
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

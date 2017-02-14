@@ -1,26 +1,17 @@
 package com.example.joseris.apptaxi;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.Actividad_principalTaxi;
-import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder;
-import com.github.rubensousa.bottomsheetbuilder.BottomSheetMenuDialog;
-import com.github.rubensousa.bottomsheetbuilder.adapter.BottomSheetItemClickListener;
+import com.example.joseris.apptaxi.Modelos.Request.RequestCrearUsuario;
+import com.example.joseris.apptaxi.Servicios.ServRegistroUsuario;
 
 public class Login extends AppCompatActivity {
     TextView TextRegistro;
@@ -57,6 +48,10 @@ public class Login extends AppCompatActivity {
                 overridePendingTransition(R.anim.left_in,R.anim.left_out);
             }
         });
+
+        ServRegistroUsuario registro=new ServRegistroUsuario();
+        RequestCrearUsuario requestCrearUsuario = new RequestCrearUsuario("V21455","12345","Isa","4142122",1,"isabel2017@gmail.com","pasajero",null,null);
+        registro.registrarUsuario(requestCrearUsuario);
     }
 
 

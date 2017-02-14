@@ -30,6 +30,7 @@ public class ServRegistroUsuario {
         call.enqueue(new Callback<ResponseRegistroUsuario>() {
             @Override
             public void onResponse(Call<ResponseRegistroUsuario> call, Response<ResponseRegistroUsuario> response) {
+
                 if (response.isSuccessful()) {
                     Log.e("Registro", ":" + call.request().url().toString());
                 }else
