@@ -1,6 +1,7 @@
 package com.example.joseris.apptaxi.Modelos.Responses;
 
-import com.example.joseris.apptaxi.Modelos.Account;
+import android.accounts.Account;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

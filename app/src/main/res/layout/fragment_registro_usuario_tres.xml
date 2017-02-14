@@ -94,8 +94,6 @@
         </android.support.design.widget.TextInputLayout>
 
 
-
-
         <TextView
             android:text="SUBIR FOTOGRAFIA USUARIO"
             android:layout_width="wrap_content"
@@ -105,9 +103,9 @@
             android:layout_marginTop="86dp"
             android:id="@+id/textView8"
             android:fontFamily="monospace"
+            android:layout_marginEnd="65dp"
             android:layout_alignTop="@+id/imageView2"
-            android:layout_alignEnd="@+id/auth_button"
-            android:layout_marginEnd="53dp" />
+            android:layout_alignParentEnd="true" />
 
 
     </RelativeLayout>

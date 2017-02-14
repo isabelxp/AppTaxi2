@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.Actividad_principalTaxi;
+import com.example.joseris.apptaxi.Modelos.Request.RequesLoginDatos;
 import com.example.joseris.apptaxi.Modelos.Request.RequestCrearUsuario;
 import com.example.joseris.apptaxi.Servicios.ServRegistroUsuario;
+import com.example.joseris.apptaxi.Servicios.ServicioLogin;
 
 public class Login extends AppCompatActivity {
     TextView TextRegistro;
@@ -41,17 +43,20 @@ public class Login extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  onShowDialogHeadersClick();
+               // onShowDialogHeadersClick();
+               // Intent i = new Intent(Login.this, Actividad_principalTaxi.class);
+               // startActivity(i);
+               // overridePendingTransition(R.anim.left_in,R.anim.left_out);
+                ServicioLogin login=new ServicioLogin();
+                RequesLoginDatos requeslogindatos= new RequesLoginDatos("isabel2017@gmail.com","kdmmdjdkdndjn","12345");
+                login.UsuarioLogin(requeslogindatos);
 
-                Intent i = new Intent(Login.this, Actividad_principalTaxi.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.left_in,R.anim.left_out);
             }
         });
 
-        ServRegistroUsuario registro=new ServRegistroUsuario();
-        RequestCrearUsuario requestCrearUsuario = new RequestCrearUsuario("V21455","12345","Isa","4142122",1,"isabel2017@gmail.com","pasajero",null,null);
-        registro.registrarUsuario(requestCrearUsuario);
+       // ServRegistroUsuario registro=new ServRegistroUsuario();
+       // RequestCrearUsuario requestCrearUsuario = new RequestCrearUsuario("V21455","12345","Isa","4142122",1,"isabel2017@gmail.com","pasajero",null,null);
+       // registro.registrarUsuario(requestCrearUsuario);
     }
 
 

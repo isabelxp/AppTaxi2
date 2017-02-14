@@ -19,6 +19,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -27,6 +28,9 @@ import android.widget.Toast;
 
 import com.example.joseris.apptaxi.R;
 import com.example.joseris.apptaxi.RegistroUsuario;
+import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder;
+import com.github.rubensousa.bottomsheetbuilder.BottomSheetMenuDialog;
+import com.github.rubensousa.bottomsheetbuilder.adapter.BottomSheetItemClickListener;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,6 +42,9 @@ import static com.example.joseris.apptaxi.R.id.fab;
 public class RegistroUsuarioDos extends Fragment {
     ImageView imagencedu;
     TextView TextFoto;
+    private static final int SELECT_FILE = 1;
+    private BottomSheetMenuDialog mBottomSheetDialog;
+    private boolean mShowingHeaderDialog;
     String rutaImagenCapturada = null;
     public RegistroUsuarioDos() {
         // Required empty public constructor
@@ -68,9 +75,11 @@ public class RegistroUsuarioDos extends Fragment {
         imagencedu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                obtenerFoto();
+                onShowOpcionesdepago();
             }
         });
+
+
 
         FloatingActionButton botonchck=(FloatingActionButton) v.findViewById(fab);
 
@@ -83,6 +92,37 @@ public class RegistroUsuarioDos extends Fragment {
 
         return v;
     }
+
+
+
+    public void onShowOpcionesdepago() {
+        if (mBottomSheetDialog != null) {
+            mBottomSheetDialog.dismiss();
+        }
+        mShowingHeaderDialog = true;
+        mBottomSheetDialog = new BottomSheetBuilder(getContext(), R.style.AppTheme_BottomSheetDialog_Custom)
+                .setMode(BottomSheetBuilder.MODE_LIST)
+                .setMenu(R.menu.menu_camara_o_galeria)
+                .expandOnStart(true)
+                .setItemClickListener(new BottomSheetItemClickListener() {
+                    @Override
+                    public void onBottomSheetItemClick(MenuItem item) {
+                        Log.d("Item click", item.getTitle() + "");
+                        mShowingHeaderDialog = false;
+                    }
+                })
+                .createDialog();
+        mBottomSheetDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                mShowingHeaderDialog = false;
+            }
+        });
+        mBottomSheetDialog.show();
+    }
+
+
+
     public void obtenerFoto() {
 
         CharSequence options[] = new CharSequence[]{"Camara", "Galeria"};
