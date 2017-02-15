@@ -5,10 +5,12 @@
         <menu>
             <item
                 android:icon="@drawable/ic_menu_camera"
-                android:title="Camara" />
+                android:title="Camara"
+                android:id="@+id/camara"/>
             <item
                 android:icon="@drawable/ic_menu_gallery"
-                android:title="Galeria" />
+                android:title="Galeria"
+                android:id="@+id/galeria"/>
 
         </menu>
     </item>

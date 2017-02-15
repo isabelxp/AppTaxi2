@@ -1,5 +1,7 @@
 package com.example.joseris.apptaxi;
 
+import android.graphics.Bitmap;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -9,25 +11,38 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.ConfirmarFoto;
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioCuatro;
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioDos;
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioTres;
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioUno;
 
+import static com.example.joseris.apptaxi.R.id.fab;
+
 public class RegistroUsuario extends AppCompatActivity {
 
+    FloatingActionButton botonchck;
+    public Bitmap imagencedulabig;
 
+    public Bitmap getImagencedulabig() {
+        return imagencedulabig;
+    }
+
+    public void setImagencedulabig(Bitmap imagencedulabig) {
+        this.imagencedulabig = imagencedulabig;
+    }
 
     public RegistroUsuarioUno fragment1 = new RegistroUsuarioUno();
     public RegistroUsuarioDos frgment2 = new RegistroUsuarioDos();
     public RegistroUsuarioTres frgment3 = new RegistroUsuarioTres();
     public RegistroUsuarioCuatro frgment4 = new RegistroUsuarioCuatro();
+    public ConfirmarFoto confirmarfotoregistro2= new ConfirmarFoto();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_usuario);
 
-
+        botonchck=(FloatingActionButton) findViewById(R.id.fab);
 
 
         Registrouno();
@@ -102,6 +117,27 @@ public class RegistroUsuario extends AppCompatActivity {
                 .replace(R.id.fragment_container2, frgment3).commit();
         overridePendingTransition(R.anim.left_in,R.anim.left_out);
     }
+
+    public void RegistrodosOpcionCamaraFoto()
+    {
+        botonchck.setVisibility(View.INVISIBLE);
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container2, confirmarfotoregistro2).commit();
+    }
+    public void RegistroConfirmarFoto()
+    {
+        getSupportFragmentManager().beginTransaction()
+                .remove(confirmarfotoregistro2).commit();
+
+        botonchck.setVisibility(View.VISIBLE);
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container2, frgment2).commit();
+
+    }
+
+
     public void RegistroCuatro()
     {
         getSupportFragmentManager().beginTransaction()

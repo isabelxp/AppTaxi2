@@ -32,6 +32,7 @@ import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder;
 import com.github.rubensousa.bottomsheetbuilder.BottomSheetMenuDialog;
 import com.github.rubensousa.bottomsheetbuilder.adapter.BottomSheetItemClickListener;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -40,12 +41,17 @@ import static com.example.joseris.apptaxi.R.id.fab;
 
 
 public class RegistroUsuarioDos extends Fragment {
-    ImageView imagencedu;
+    public ImageView imagencedu;
     TextView TextFoto;
     private static final int SELECT_FILE = 1;
     private BottomSheetMenuDialog mBottomSheetDialog;
     private boolean mShowingHeaderDialog;
+    public static Context contextOfApplication;
+    private static int TAKE_PICTURE = 1;
+    private static int SELECT_PICTURE = 2;
     String rutaImagenCapturada = null;
+    private String name = "";
+    private Uri output;
     public RegistroUsuarioDos() {
         // Required empty public constructor
     }
@@ -70,12 +76,20 @@ public class RegistroUsuarioDos extends Fragment {
         TextFoto = (TextView) v.findViewById(R.id.textView4);
         imagencedu = (ImageView) v.findViewById(R.id.imagecedula);
         String font_path = "font/Roboto-Light.ttf";
+
+        if(((RegistroUsuario)getActivity()).getImagencedulabig()!=null)
+        {
+            imagencedu.setImageBitmap(((RegistroUsuario)getActivity()).getImagencedulabig());
+        }
+
+
         Typeface TF = Typeface.createFromAsset(getContext().getAssets(),font_path);
         TextFoto.setTypeface(TF);
         imagencedu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onShowOpcionesdepago();
+                //((RegistroUsuario)getActivity()).RegistrodosOpcionCamaraFoto();
             }
         });
 
@@ -94,11 +108,12 @@ public class RegistroUsuarioDos extends Fragment {
     }
 
 
-
     public void onShowOpcionesdepago() {
         if (mBottomSheetDialog != null) {
             mBottomSheetDialog.dismiss();
         }
+        Log.e("Item click ", ":" );
+
         mShowingHeaderDialog = true;
         mBottomSheetDialog = new BottomSheetBuilder(getContext(), R.style.AppTheme_BottomSheetDialog_Custom)
                 .setMode(BottomSheetBuilder.MODE_LIST)
@@ -107,7 +122,15 @@ public class RegistroUsuarioDos extends Fragment {
                 .setItemClickListener(new BottomSheetItemClickListener() {
                     @Override
                     public void onBottomSheetItemClick(MenuItem item) {
-                        Log.d("Item click", item.getTitle() + "");
+                        int id = item.getItemId();
+                        if (id == R.id.camara) {
+                            Fotografia();
+                            Log.e("Item click1", ":");
+                        }else
+                        if (id == R.id.galeria) {
+                            abrirGaleria();
+                            Log.e("Item click2", ":");
+                        }
                         mShowingHeaderDialog = false;
                     }
                 })
@@ -122,97 +145,76 @@ public class RegistroUsuarioDos extends Fragment {
     }
 
 
-
-    public void obtenerFoto() {
-
-        CharSequence options[] = new CharSequence[]{"Camara", "Galeria"};
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Image Source");
-        builder.setItems(options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (which == 0) {
-                    Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                    String rutaCarpetaTemporal = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tmp_taxi/";
-
-                    File carpetaFisica = new File(rutaCarpetaTemporal);
-
-                    carpetaFisica.mkdirs();
-
-                    rutaImagenCapturada = rutaCarpetaTemporal + "Taxi.jpg";
-
-                    Uri output = Uri.fromFile(new File(rutaImagenCapturada));
-
-                    takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, output);
-
-                    takePhotoIntent.putExtra("android.intent.extras.CAMERA_FACING", 1);
-
-                    try {
-                        startActivityForResult(takePhotoIntent, 2);
-                    } catch (ActivityNotFoundException anfe) {
-
-
-                    }
-                } else if (which == 1) {
-                    Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    galleryIntent.setType("image/*");
-                    try {
-                        startActivityForResult(galleryIntent, 1);
-                    } catch (ActivityNotFoundException anfe) {
-
-                    }
-                }
-            }
-        });
-        builder.show();
+    public void abrirGaleria() {
+        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        Uri output = Uri.fromFile(new File(name));
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, output);
+        int code = SELECT_PICTURE;
+        startActivityForResult(intent, code);
     }
+    public void Fotografia() {
+        Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intentRecibido) {
-        super.onActivityResult(requestCode, resultCode, intentRecibido);
+        String rutaCarpetaTemporal = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tmp_taxi/";
 
+        File carpetaFisica = new File(rutaCarpetaTemporal);
 
-        if ((requestCode == 2 || requestCode == 1) && resultCode == Activity.RESULT_OK) {
+        carpetaFisica.mkdirs();
 
-            if (requestCode == 2) {
-                String imgUriCam;
-                imgUriCam = rutaImagenCapturada;
-                Log.d(" mal", "--->RRUEBA 1 " + imgUriCam);
+        rutaImagenCapturada = rutaCarpetaTemporal + "Taxi.jpg";
 
-                File imgFile = new File(imgUriCam);
-                if (!imgFile.exists()) {
-                    Toast.makeText(getContext(), "No se pudo montar la imagen", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-                Drawable d = new BitmapDrawable(getResources(), myBitmap);
-                imagencedu.setImageBitmap(myBitmap);
+        Uri output = Uri.fromFile(new File(rutaImagenCapturada));
 
-            } else {
+        takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, output);
 
-                Uri imgUriGal = intentRecibido.getData();
-                if (imgUriGal == null) {
-                    Toast.makeText(getContext(), "ninguna imagen seleccionada", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                try {
-                    InputStream is = getContext().getContentResolver().openInputStream(imgUriGal);
-                    Bitmap bmp = BitmapFactory.decodeStream(is);
-                      imagencedu.setImageBitmap(bmp);
+        takePhotoIntent.putExtra("android.intent.extras.CAMERA_FACING", 1);
 
-                } catch (FileNotFoundException e) {
-                    Toast.makeText(getContext(), "No se pudo montar la imagen", Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                }
-
-            }
+        try {
+            startActivityForResult(takePhotoIntent, 1);
+        } catch (ActivityNotFoundException anfe) {
 
 
         }
+    }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == SELECT_PICTURE){
+            Uri selectedImage = data.getData();
+            InputStream is;
+            try {
+                is =  getActivity().getApplicationContext().getContentResolver().openInputStream(selectedImage);
+                BufferedInputStream bis = new BufferedInputStream(is);
+                Bitmap bitmap = BitmapFactory.decodeStream(bis);
+                imagencedu.setImageBitmap(bitmap);
+                ((RegistroUsuario)getActivity()).setImagencedulabig(bitmap);
+                ((RegistroUsuario)getActivity()).RegistrodosOpcionCamaraFoto();
+            } catch (FileNotFoundException e) {}
+        }else
+        if (requestCode == TAKE_PICTURE){
+
+            String imgUriCam;
+            imgUriCam = rutaImagenCapturada;
+            Log.d(" mal", "--->RRUEBA 1 " + imgUriCam);
+
+            File imgFile = new File(imgUriCam);
+            if (!imgFile.exists()) {
+                Toast.makeText(getContext(), "No se pudo montar la imagen", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            Drawable d = new BitmapDrawable(getResources(), myBitmap);
+            imagencedu.setImageBitmap(myBitmap);
+            ((RegistroUsuario)getActivity()).setImagencedulabig(myBitmap);
+            ((RegistroUsuario)getActivity()).RegistrodosOpcionCamaraFoto();
+        }
 
     }
+
+
+
+
+
+
 
 }
