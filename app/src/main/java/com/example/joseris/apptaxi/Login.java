@@ -1,6 +1,7 @@
 package com.example.joseris.apptaxi;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -29,9 +30,6 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         TextRegistro = (TextView) findViewById(R.id.textregistro);
-
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -51,12 +49,12 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                // onShowDialogHeadersClick();
-               // Intent i = new Intent(Log     in.this, Actividad_principalTaxi.class);
-               // startActivity(i);
-               // overridePendingTransition(R.anim.left_in,R.anim.left_out);
-                ServicioLogin login=new ServicioLogin();
-                RequesLoginDatos requeslogindatos= new RequesLoginDatos("isabel2017@gmail.com","kdmmdjdkdndjn","12345");
-                login.UsuarioLogin(requeslogindatos);
+                Intent i = new Intent(Login.this, Actividad_principalTaxi.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.left_in,R.anim.left_out);
+               // ServicioLogin login=new ServicioLogin();
+               // RequesLoginDatos requeslogindatos= new RequesLoginDatos("isabel2017@gmail.com","kdmmdjdkdndjn","12345");
+               // login.UsuarioLogin(requeslogindatos);
 
             }
         });
@@ -65,7 +63,6 @@ public class Login extends AppCompatActivity {
        // RequestCrearUsuario requestCrearUsuario = new RequestCrearUsuario("V21455","12345","Isa","4142122",1,"isabel2017@gmail.com","pasajero",null,null);
        // registro.registrarUsuario(requestCrearUsuario);
     }
-
 
 
 }
