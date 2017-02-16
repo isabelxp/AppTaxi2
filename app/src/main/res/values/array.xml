@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="VE">
+        <item>VE</item>
+        <item>E</item>
+    </string-array>
+       <string-array name="numero">
+            <item>+58</item>
+    </string-array>
+</resources>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.joseris.apptaxi.Login">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/fondoprincipal"
+        >
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="300dp"
+        android:background="#00BCD4"
+        >
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="310dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido, disfruta tu vieje"
+            android:textSize="22dp"
+            android:layout_marginLeft="40dp"
+            android:textColor="#424242"
+            />
+
+        <EditText
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:singleLine="true"
+            android:backgroundTint="@android:color/black"
+            android:textColor="@android:color/black"
+            android:hint="Ingresa tu usuario"
+            />
+        <EditText
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:singleLine="true"
+            android:backgroundTint="@android:color/black"
+            android:inputType="textPassword"
+            android:textColor="@android:color/black"
+            android:hint="Ingresa tu contraseña"
+            />
+        <LinearLayout
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#E0E0E0"
+            >
+        </LinearLayout>
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="17dp"
+             android:layout_marginLeft="30dp"
+             android:textSize="16dp"
+             android:textColor="#0277BD"
+             android:text="Olvide mi contraseña"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:id="@+id/textregistro"
+            android:textColor="#0277BD"
+            android:textSize="16dp"
+            android:layout_marginLeft="30dp"
+            android:text="Crear una cuenta"/>
+
+    </LinearLayout>
+</RelativeLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/ic_checkmark"
+        app:backgroundTint="@android:color/black"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="bottom|right"
+        android:layout_gravity="top|left"
+        android:layout_marginBottom="20dp"
+        android:layout_margin="30dp"
+        android:layout_marginRight="@dimen/fab_margin"
+         />
+
+    <include layout="@layout/content_login"
+        android:id="@+id/include" />
+
+
+</android.support.design.widget.CoordinatorLayout>

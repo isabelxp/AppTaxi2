@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_registro_usuario"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.joseris.apptaxi.RegistroUsuario"
+    >
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/ic_checkflecha"
+        app:backgroundTint="@android:color/black"
+        app:layout_anchor="@+id/include"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        app:layout_anchorGravity="bottom|right"
+        android:layout_gravity="bottom|right"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <RelativeLayout
+        android:id="@+id/fragment_container2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+    </RelativeLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:popupTheme="@style/Theme.AppCompat.Light"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:ignore="UnusedAttribute"/>
+
+
+</FrameLayout>
