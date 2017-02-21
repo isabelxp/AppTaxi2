@@ -1,6 +1,7 @@
 package com.example.joseris.apptaxi.FragmnetsRegistroUsuario;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -16,8 +17,11 @@ import com.digits.sdk.android.Digits;
 import com.digits.sdk.android.DigitsAuthButton;
 import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsSession;
+import com.example.joseris.apptaxi.Login;
+import com.example.joseris.apptaxi.Modelos.Request.RequestCrearUsuario;
 import com.example.joseris.apptaxi.R;
 import com.example.joseris.apptaxi.RegistroUsuario;
+import com.example.joseris.apptaxi.Servicios.ServRegistroUsuario;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterCore;
 
@@ -57,7 +61,13 @@ public class RegistroUsuarioCuatro extends Fragment {
             @Override
             public void success(DigitsSession session, String phoneNumber) {
                 // TODO: associate the session userID with your user model
-                Toast.makeText(getContext(), "Usuario Registrado con Exito"
+                  ServRegistroUsuario registro=new ServRegistroUsuario();
+                  RequestCrearUsuario requestCrearUsuario = new RequestCrearUsuario("V"+((RegistroUsuario)getActivity()).registro.getCi(),((RegistroUsuario)getActivity()).registro.getPassword(),((RegistroUsuario)getActivity()).registro.getName(),((RegistroUsuario)getActivity()).registro.getPhone(),1,((RegistroUsuario)getActivity()).registro.getEmail(),"pasajero",null,null);
+                  Log.e("Datos de Registro", ":" +((RegistroUsuario)getActivity()).registro.toString());
+                  registro.registrarUsuario(requestCrearUsuario);
+                //Intent i = new Intent(getContext(), Login.class);
+               // startActivity(i);
+                  Toast.makeText(getContext(), "Usuario Registrado con Exito"
                         + phoneNumber, Toast.LENGTH_LONG).show();
             }
 

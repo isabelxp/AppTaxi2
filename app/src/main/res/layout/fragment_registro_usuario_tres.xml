@@ -27,14 +27,14 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@drawable/fotousuario"
+            android:background="@drawable/fondo_perfil_usuario"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="62dp"
             android:scaleType="fitXY"
-            android:id="@+id/imageView2" />
+            android:id="@+id/imagefotousuario" />
         <LinearLayout
-            android:layout_below="@id/imageView2"
+            android:layout_below="@id/imagefotousuario"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -93,20 +93,6 @@
                 android:layout_alignStart="@+id/editCorreo" />
         </android.support.design.widget.TextInputLayout>
 
-
-        <TextView
-            android:text="SUBIR FOTOGRAFIA USUARIO"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:textSize="13dp"
-            android:layout_marginTop="86dp"
-            android:id="@+id/textView8"
-            android:fontFamily="monospace"
-            android:layout_marginEnd="65dp"
-            android:layout_alignTop="@+id/imageView2"
-            android:layout_alignParentEnd="true" />
-
         <EditText
          android:layout_width="180dp"
          android:layout_height="wrap_content"
@@ -135,6 +121,29 @@
             android:layout_weight="1"
             android:layout_alignBottom="@+id/spinner2"
             android:layout_toStartOf="@+id/spinner2" />
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:background="@drawable/foto_option_transparente"
+            android:id="@+id/imageView4"
+            android:layout_above="@+id/linearLayout"
+            android:layout_alignStart="@+id/spinner2"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="63dp" />
+
+        <TextView
+            android:text="SUBIR FOTOGRAFIA USUARIO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="13dp"
+            android:layout_marginTop="26dp"
+            android:id="@+id/textView8"
+            android:fontFamily="monospace"
+            android:layout_marginEnd="65dp"
+            android:layout_alignTop="@+id/imageView4"
+            android:layout_alignParentEnd="true" />
     </RelativeLayout>
 
 

@@ -58,40 +58,11 @@ public class ConfirmarFoto extends Fragment {
         buttonNuevaFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onShowOpcionesdepago();
+                ((RegistroUsuario)getActivity()).RegistroDos();
             }
         });
 
         return v;
-    }
-    public void onShowOpcionesdepago() {
-        if (mBottomSheetDialog != null) {
-            mBottomSheetDialog.dismiss();
-        }
-        mShowingHeaderDialog = true;
-        mBottomSheetDialog = new BottomSheetBuilder(getContext(), R.style.AppTheme_BottomSheetDialog_Custom)
-                .setMode(BottomSheetBuilder.MODE_LIST)
-                .setMenu(R.menu.menu_camara_o_galeria)
-                .expandOnStart(true)
-                .setItemClickListener(new BottomSheetItemClickListener() {
-                    @Override
-                    public void onBottomSheetItemClick(MenuItem item) {
-                        int id = item.getItemId();
-                        if (id == R.id.action_settings) {
-
-                        }
-                        Log.d("Item click", item.getTitle() + "");
-                        mShowingHeaderDialog = false;
-                    }
-                })
-                .createDialog();
-        mBottomSheetDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                mShowingHeaderDialog = false;
-            }
-        });
-        mBottomSheetDialog.show();
     }
 
 

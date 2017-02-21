@@ -45,12 +45,14 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:singleLine="true"
+            android:id="@+id/editemaillogin"
             android:backgroundTint="@android:color/black"
             android:textColor="@android:color/black"
             android:hint="Ingresa tu usuario"
             />
         <EditText
             android:layout_width="290dp"
+            android:id="@+id/editpasswordlogin"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:singleLine="true"

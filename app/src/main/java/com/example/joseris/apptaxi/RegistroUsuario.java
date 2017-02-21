@@ -1,6 +1,10 @@
 package com.example.joseris.apptaxi;
 
+import android.*;
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,14 +21,15 @@ import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioDos;
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioTres;
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioUno;
 
-import static com.example.joseris.apptaxi.R.id.fab;
 
 public class RegistroUsuario extends AppCompatActivity {
 
+
     FloatingActionButton botonchck;
+    private static final int REQUEST_FOR_PERMISSION = 1;
     public Bitmap imagencedulabig;
     public String numerodecel;
-
+    public ClassInformacionUsuarioRegistro registro= new ClassInformacionUsuarioRegistro();
     public String getNumerodecel() {
         return numerodecel;
     }
@@ -53,9 +58,8 @@ public class RegistroUsuario extends AppCompatActivity {
 
         botonchck=(FloatingActionButton) findViewById(R.id.fab);
 
-
+        permisos();
         Registrouno();
-
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -106,14 +110,13 @@ public class RegistroUsuario extends AppCompatActivity {
     }
     public void RegistroDos()
     {
-
-
         getSupportFragmentManager().beginTransaction()
                 .remove(fragment1).commit();
 
         getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.left_in, R.anim.left_out)
                 .replace(R.id.fragment_container2, frgment2).commit();
+
        // overridePendingTransition(R.anim.left_in,R.anim.left_out);
     }
     public void RegistroTres()
@@ -156,6 +159,20 @@ public class RegistroUsuario extends AppCompatActivity {
                 .setCustomAnimations(R.anim.left_in, R.anim.left_out)
                 .replace(R.id.fragment_container2, frgment4).commit();
         overridePendingTransition(R.anim.left_in,R.anim.left_out);
+    }
+
+    public void permisos()
+    {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (this.checkSelfPermission(Manifest.permission.CAMERA) !=
+                    PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{android.Manifest.permission.CAMERA},
+                        REQUEST_FOR_PERMISSION);
+            } else {
+
+            }
+        }
     }
 
 

@@ -17,7 +17,7 @@
         </LinearLayout>
 
         <Button
-            android:text="NUEVA FOTO"
+            android:text="Cancelar"
             android:textColor="@android:color/darker_gray"
             android:backgroundTint="@android:color/white"
             android:elevation="8dp"

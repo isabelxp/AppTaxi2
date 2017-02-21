@@ -1,17 +1,20 @@
 package com.example.joseris.apptaxi.FragmnetsRegistroUsuario;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -42,6 +45,7 @@ import static com.example.joseris.apptaxi.R.id.fab;
 
 public class RegistroUsuarioDos extends Fragment {
     public ImageView imagencedu;
+    private static final int REQUEST_FOR_PERMISSION = 1;
     TextView TextFoto;
     boolean fotoTomada=false;
     private static final int SELECT_FILE = 1;
@@ -128,7 +132,11 @@ public class RegistroUsuarioDos extends Fragment {
                     public void onBottomSheetItemClick(MenuItem item) {
                         int id = item.getItemId();
                         if (id == R.id.camara) {
+                            //((RegistroUsuario)getActivity()).permisos();
                             Fotografia();
+
+
+
                             Log.e("Item click1", ":");
                         }else
                         if (id == R.id.galeria) {
@@ -180,7 +188,19 @@ public class RegistroUsuarioDos extends Fragment {
 
         }
     }
+    public void permisos()
+    {
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (getActivity().checkSelfPermission(Manifest.permission.CAMERA) !=
+                    PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{android.Manifest.permission.CAMERA},
+                        REQUEST_FOR_PERMISSION);
+            } else {
+
+            }
+        }
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == SELECT_PICTURE){

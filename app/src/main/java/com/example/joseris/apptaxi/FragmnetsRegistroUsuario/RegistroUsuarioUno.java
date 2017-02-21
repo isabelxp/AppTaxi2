@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.joseris.apptaxi.ClassInformacionUsuarioRegistro;
 import com.example.joseris.apptaxi.DatosUsuario.Cne;
 import com.example.joseris.apptaxi.Interfaces.DatosUsuarioInter;
 import com.example.joseris.apptaxi.R;
@@ -47,6 +48,7 @@ public class RegistroUsuarioUno extends Fragment {
     private ProgressDialog loading;
     boolean nombreencontrado=false;
     Spinner opcionesNacionalidad;
+
     public RegistroUsuarioUno() {
         // Required empty public constructor
     }
@@ -57,6 +59,7 @@ public class RegistroUsuarioUno extends Fragment {
                              Bundle savedInstanceState) {
 
         View v=inflater.inflate(R.layout.fragment_registro_usuario_uno, container, false);
+
         FloatingActionButton botonchck=(FloatingActionButton) v.findViewById(fab);
         nombre=(TextView) v.findViewById(R.id.textViewNombreUsuario);
         cedula=(EditText) v.findViewById(R.id.editCedula);
@@ -124,7 +127,7 @@ public class RegistroUsuarioUno extends Fragment {
 
         return v;
     }
-    public void usuario(int numerocedula)
+    public void usuario(final int numerocedula)
     {
 
         Gson gson = new GsonBuilder()
@@ -143,7 +146,9 @@ public class RegistroUsuarioUno extends Fragment {
             public void onResponse(Call<Cne> call, Response<Cne> response) {
                 if (response.isSuccessful()) {
                     nombreencontrado=true;
+                    ((RegistroUsuario)getActivity()).registro.setName(response.body().getNombre());
                     nombre.setText(response.body().getNombre());
+                    ((RegistroUsuario)getActivity()).registro.setName(Integer.toString(numerocedula));
                     Log.e("Nombre", ":" + response.body().getNombre());
                     }else
                     Log.e("Noooooooo", ":" + response.body().getNombre());

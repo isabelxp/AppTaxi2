@@ -1,11 +1,13 @@
 package com.example.joseris.apptaxi.FragmnetsRegistroUsuario;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.NavigationView;
@@ -38,6 +40,7 @@ public class Actividad_principalTaxi extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
     private GoogleMap mMap;
     private Marker marcador;
+    private static final int REQUEST_FOR_PERMISSION = 1;
     double lat = 0.0;
     double lng = 0.0;
     private BottomSheetMenuDialog mBottomSheetDialog;
@@ -49,7 +52,8 @@ public class Actividad_principalTaxi extends AppCompatActivity
         setContentView(R.layout.activity_actividad_principal_taxi);
 
         Log.d("APP_TAXI","HOLAAAAA");
-
+//        miUbicacion();
+        permisos();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -57,9 +61,7 @@ public class Actividad_principalTaxi extends AppCompatActivity
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container2, fragment1).commit();
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -242,5 +244,21 @@ public class Actividad_principalTaxi extends AppCompatActivity
             return;
         }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000, 0, locListener);
+    }
+    public void permisos()
+    {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (this.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) !=
+                    PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                        REQUEST_FOR_PERMISSION);
+                SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                        .findFragmentById(R.id.map);
+                mapFragment.getMapAsync(this);
+            } else {
+
+            }
+        }
     }
 }
