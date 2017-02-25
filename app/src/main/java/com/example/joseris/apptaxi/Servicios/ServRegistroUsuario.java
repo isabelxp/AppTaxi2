@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.joseris.apptaxi.Interfaces.RegistroUsuario;
 import com.example.joseris.apptaxi.Modelos.Request.RequestCrearUsuario;
 import com.example.joseris.apptaxi.Modelos.Responses.ResponseRegistroUsuario;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,7 +33,7 @@ public class ServRegistroUsuario {
             public void onResponse(Call<ResponseRegistroUsuario> call, Response<ResponseRegistroUsuario> response) {
 
                 if (response.isSuccessful()) {
-                    Log.e("Registro", ":" + call.request().url().toString());
+                    Log.e("Registro exitoso", ":" + new Gson().toJson(response.body()));
                 }else
                 {
                    Log.e("No Registro", "------");
