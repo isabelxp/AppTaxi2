@@ -30,3 +30,10 @@ new ServPhotoByCI("V1003933", 300){ //Cedula,Tamaño en pixeles *Opcional*
     }
 };
 ```
+
+- Recuperar password
+```java
+ServRecuperarPass recuperar = new ServRecuperarPass(
+    new RequestRecuperarPass("dadcrazy@gmail.com","V1003933") //Correo, Cedula
+);
+```
