@@ -6,28 +6,30 @@ import android.accounts.Account;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.json.JSONObject;
+
 public class Example {
 
     @SerializedName("success")
     @Expose
-    private String success;
+    private JSONObject success;
     @SerializedName("account")
     @Expose
-    private Account account;
+    private JSONObject account;
 
-    public String getSuccess() {
+    public JSONObject getSuccess() {
         return success;
     }
 
-    public void setSuccess(String success) {
+    public void setSuccess(JSONObject success) {
         this.success = success;
     }
 
-    public Account getAccount() {
+    public JSONObject getAccount() {
         return account;
     }
 
-    public void setAccount(Account account) {
+    public void setAccount(JSONObject account) {
         this.account = account;
     }
 

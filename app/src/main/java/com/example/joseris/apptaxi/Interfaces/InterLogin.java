@@ -6,6 +6,7 @@ import com.example.joseris.apptaxi.Modelos.Request.RequestCrearUsuario;
 import com.example.joseris.apptaxi.Modelos.Responses.Example;
 import com.example.joseris.apptaxi.Modelos.Responses.ResponseRegistroUsuario;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

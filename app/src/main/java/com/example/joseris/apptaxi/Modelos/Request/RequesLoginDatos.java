@@ -13,10 +13,11 @@ public class RequesLoginDatos {
     private String email;
     @SerializedName("password")
     @Expose
-    private String firebase_token;
+    private String password;
     @SerializedName("firebase_token")
     @Expose
-    private String password;
+    private String firebase_token;
+
 
     public RequesLoginDatos(String email,  String password, String firebase_token) {
         this.email = email;
