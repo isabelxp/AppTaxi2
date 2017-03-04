@@ -11,13 +11,15 @@ import android.widget.TextView;
 
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.Actividad_principalTaxi;
 import com.example.joseris.apptaxi.Modelos.Request.RequesLoginDatos;
+import com.example.joseris.apptaxi.Modelos.Request.RequestCambiarPass;
 import com.example.joseris.apptaxi.Modelos.Request.RequestCrearUsuario;
+import com.example.joseris.apptaxi.Servicios.ServCambiarPass;
 import com.example.joseris.apptaxi.Servicios.ServRegistroUsuario;
 import com.example.joseris.apptaxi.Servicios.ServicioLogin;
 
 public class Login extends AppCompatActivity {
     TextView TextRegistro;
-
+    private ServicioLogin login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,6 @@ public class Login extends AppCompatActivity {
         });
         CoordinatorLayout vista=(CoordinatorLayout)findViewById(R.id.coordinatorlayout);
 
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,18 +48,17 @@ public class Login extends AppCompatActivity {
                // Intent i = new Intent(Login.this, Actividad_principalTaxi.class);
                // startActivity(i);
                // overridePendingTransition(R.anim.left_in,R.anim.left_out);
-                ServicioLogin login=new ServicioLogin();
-                RequesLoginDatos requeslogindatos= new RequesLoginDatos("dadcrazy@gmail.com","12345","kdmmdjdkdndjn");
+                login = new ServicioLogin();
+                RequesLoginDatos requeslogindatos= new RequesLoginDatos("josues@gmail.com","12345678","kdmmdjdkdndjn");
                 login.UsuarioLogin(requeslogindatos);
-
             }
         });
 
-       // ServRegistroUsuario registro=new ServRegistroUsuario();
-       // RequestCrearUsuario requestCrearUsuario = new RequestCrearUsuario("V21455","12345","Isa","4142122",1,"isabel2017@gmail.com","pasajero",null,null);
-       // registro.registrarUsuario(requestCrearUsuario);
+        //ServRegistroUsuario registro=new ServRegistroUsuario();
+        //RequestCrearUsuario requestCrearUsuario = new RequestCrearUsuario("V21455","12345","Isa","4142122",1,"isabel2017@gmail.com","pasajero",null,null);
+        //registro.registrarUsuario(requestCrearUsuario);
+
+        //RequestCambiarPass requestCambiarPass = new RequestCambiarPass("12345", "12345678", login.getToken());
+        //ServCambiarPass cambiar = new ServCambiarPass(requestCambiarPass);
     }
-
-
-
 }

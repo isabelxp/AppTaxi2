@@ -1,20 +1,19 @@
-
 package com.example.joseris.apptaxi.Modelos.Responses;
-
-import android.accounts.Account;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.json.JSONObject;
+/**
+ * Created by Andy on 01/03/2017.
+ */
 
-public class Example {
+public class ResponseCambiarPass {
     @SerializedName("success")
     @Expose
     private String success;
-    @SerializedName("account")
+    @SerializedName("description")
     @Expose
-    private Object account;
+    private String description;
 
     public String getSuccess() {
         return success;
@@ -24,12 +23,12 @@ public class Example {
         this.success = success;
     }
 
-    public Object getAccount() {
-        return account;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAccount(Object account) {
-        this.account = account;
+    public void setDescription(String account) {
+        this.description = account;
     }
 
 }

@@ -1,4 +1,4 @@
-# AppTaxi2
+﻿# AppTaxi2
 taxi taxi
 
 #Consumiendo servicios
@@ -35,5 +35,16 @@ new ServPhotoByCI("V1003933", 300){ //Cedula,Tamaño en pixeles *Opcional*
 ```java
 ServRecuperarPass recuperar = new ServRecuperarPass(
     new RequestRecuperarPass("dadcrazy@gmail.com","V1003933") //Correo, Cedula
+);
+```
+
+- Cambiar password
+```java
+RequestCambiarPass requestCambiarPass = new RequestCambiarPass(
+    "12345", //Vieja contraseña
+    "12345678", //Nueva contraseña
+    login.getToken() //getToken() es un metodo de ServicioLogin, el token identifica al usuario en el servidor
+);
+ServCambiarPass cambiar = new ServCambiarPass(requestCambiarPass);
 );
 ```

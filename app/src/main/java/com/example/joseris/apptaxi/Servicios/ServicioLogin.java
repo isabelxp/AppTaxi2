@@ -33,6 +33,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServicioLogin {
 
+    private String token;
 
     public void UsuarioLogin(RequesLoginDatos requestlogindatos)
     {
@@ -50,9 +51,10 @@ public class ServicioLogin {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
                 try {
-                    JSONObject account = new JSONObject(new Gson().toJson(response.body().getAccount()));
                     if (response.isSuccessful()) {
-                        Log.e("Login", account.getString("ci"));
+                        JSONObject account = new JSONObject(new Gson().toJson(response.body().getAccount()));
+                        Log.e("Login", "---------");
+                        setToken(account.getString("token"));
                     }else
                     {
                         Log.e("No Login", "------");
@@ -69,5 +71,13 @@ public class ServicioLogin {
             }
         });
 
+    }
+
+    public String getToken(){
+        return this.token;
+    }
+
+    private void setToken(String t){
+        this.token = t;
     }
 }
