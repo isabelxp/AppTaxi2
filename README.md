@@ -46,5 +46,4 @@ RequestCambiarPass requestCambiarPass = new RequestCambiarPass(
     login.getToken() //getToken() es un metodo de ServicioLogin, el token identifica al usuario en el servidor
 );
 ServCambiarPass cambiar = new ServCambiarPass(requestCambiarPass);
-);
 ```
