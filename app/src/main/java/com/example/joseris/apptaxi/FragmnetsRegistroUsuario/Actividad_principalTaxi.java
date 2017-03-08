@@ -36,6 +36,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class Actividad_principalTaxi extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
     private GoogleMap mMap;
@@ -51,7 +53,7 @@ public class Actividad_principalTaxi extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_principal_taxi);
 
-        Log.d("APP_TAXI","HOLAAAAA");
+      //  Log.d("APP_TAXI","HOLAAAAA");
 //        miUbicacion();
         permisos();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -74,8 +76,9 @@ public class Actividad_principalTaxi extends AppCompatActivity
 
 
     }
+    public void onBackPressed() { }
 
-    @Override
+    /*
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -83,8 +86,11 @@ public class Actividad_principalTaxi extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }*/
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

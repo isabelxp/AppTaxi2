@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -43,12 +44,14 @@ import static java.sql.Types.NULL;
 public class RegistroUsuarioUno extends Fragment {
     TextView nombre;
     EditText cedula;
+    FloatingActionButton botonchck;
     Button ir;
     ImageView x;
     private ProgressDialog loading;
     boolean nombreencontrado=false;
+    boolean nombreEscritoManual=false;
     Spinner opcionesNacionalidad;
-
+    ImageView imagenacercade;
     public RegistroUsuarioUno() {
         // Required empty public constructor
     }
@@ -60,9 +63,10 @@ public class RegistroUsuarioUno extends Fragment {
 
         View v=inflater.inflate(R.layout.fragment_registro_usuario_uno, container, false);
 
-        FloatingActionButton botonchck=(FloatingActionButton) v.findViewById(fab);
+        botonchck=(FloatingActionButton) v.findViewById(fab);
         nombre=(TextView) v.findViewById(R.id.textViewNombreUsuario);
         cedula=(EditText) v.findViewById(R.id.editCedula);
+        imagenacercade=(ImageView) v.findViewById(R.id.imageAcercade);
         x=(ImageView) v.findViewById(R.id.imagviewX);
         ir=(Button) v.findViewById(R.id.buttonIr);
 
@@ -96,26 +100,32 @@ public class RegistroUsuarioUno extends Fragment {
             }
         });
 
-
-
-
-        ir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int cedu=Integer.valueOf(cedula.getText().toString());
-                usuario(cedu);
-            }
-        });
-
-
         botonchck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (nombreEscritoManual==false & nombreencontrado==false)
+                {
+                    if(cedula.length()>=6)
+                    {
+                    int cedu=Integer.valueOf(cedula.getText().toString());
+                    usuario(cedu);
+                    }
+                }
                 if(nombreencontrado==true)
                 {
-                    ((RegistroUsuario)getActivity()).RegistroDos();
+                    if(cedula.length()>=6)
+                    {
+                    ((RegistroUsuario)getActivity()).RegistroTres();
+                    }
                 }
-
+                if(nombreEscritoManual==true)
+                {
+                    if(cedula.length()>=6)
+                    {
+                        ((RegistroUsuario)getActivity()).RegistroUsuarioNoRegistrado();
+                        ((RegistroUsuario) getActivity()).registro.setCi(cedula.getText().toString());
+                    }
+                }
             }
         });
         Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
@@ -145,21 +155,38 @@ public class RegistroUsuarioUno extends Fragment {
             @Override
             public void onResponse(Call<Cne> call, Response<Cne> response) {
                 if (response.isSuccessful()) {
-                    nombreencontrado=true;
-                    ((RegistroUsuario)getActivity()).registro.setName(response.body().getNombre());
-                    nombre.setText(response.body().getNombre());
-                    ((RegistroUsuario)getActivity()).registro.setName(Integer.toString(numerocedula));
-                    Log.e("Nombre", ":" + response.body().getNombre());
-                    }else
-                    Log.e("Noooooooo", ":" + response.body().getNombre());
-                loading.dismiss();
-                {
+                   if(response.body().getModo()!=null) {
+                       if (response.body().getModo() == 1) {
+                           nombreencontrado = true;
+                           botonchck.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_checkflecha));
+                           ((RegistroUsuario) getActivity()).registro.setName(response.body().getNombre().toString());
+                           ((RegistroUsuario) getActivity()).registro.setCi(Integer.toString(numerocedula));
+                           nombre.setText(response.body().getNombre());
 
+                           loading.dismiss();
+                       }
+                       if (response.body().getModo() == 2) {
+                           nombreEscritoManual = true;
+
+                           nombre.setText("Esta Cedula de Identidad no se encuentra inscrita en el CNE. Presione el boton " +
+                                   "de siguiente para continuar con el registro.");
+                           imagenacercade.setVisibility(View.VISIBLE);
+                           Log.e("Nombre_", ":" + response.body().getModo());
+                           loading.dismiss();
+                       }
+                      }
+                    }else
+                {
+                     Log.e("Noooooooo123", ":" + response.body().getNombre());
                 }
+
+                loading.dismiss();
                 }
 
             @Override
             public void onFailure(Call<Cne> call, Throwable t) {
+                nombreEscritoManual=true;
+                loading.dismiss();
                 Log.e("Error:", ":" + t);
             }
 

@@ -81,17 +81,12 @@ public class RegistroUsuarioTres extends Fragment {
         x=(ImageView) v.findViewById(R.id.imagviewX);
         numerotelefono=(EditText) v.findViewById(R.id.editnumerotelefo);
         correo=(EditText) v.findViewById(R.id.editCorreo);
-        imagenfotos= (ImageView) v.findViewById(R.id.imagefotousuario);
+       // imagenfotos= (ImageView) v.findViewById(R.id.imagefotousuario);
         password=(EditText) v.findViewById(R.id.editContrasena);
 
+        RegistroUsuario usuario=new RegistroUsuario();
+        Log.e("Datos_Prueba_objeto_2", "------" +usuario.registro.toString());
 
-        imagenfotos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onShowOpcionedefoto();
-
-            }
-        });
 
 
         numerotelefono.addTextChangedListener(new TextWatcher() {

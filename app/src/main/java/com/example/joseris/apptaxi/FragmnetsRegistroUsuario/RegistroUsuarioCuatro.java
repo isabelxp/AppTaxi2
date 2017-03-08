@@ -22,6 +22,7 @@ import com.example.joseris.apptaxi.Modelos.Request.RequestCrearUsuario;
 import com.example.joseris.apptaxi.R;
 import com.example.joseris.apptaxi.RegistroUsuario;
 import com.example.joseris.apptaxi.Servicios.ServRegistroUsuario;
+import com.example.joseris.apptaxi.UltimoPasoActivity;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterCore;
 
@@ -36,8 +37,7 @@ public class RegistroUsuarioCuatro extends Fragment {
     private static final String TWITTER_SECRET = "1DXHn1iRkhqHCQXXoAD4EqkI5hJKaanTk2cPUGTA8vHv2MnSa2";
     private AuthCallback authCallback;
     DigitsAuthButton digitsButton;
-    RegistroUsuarioTres fragment=new RegistroUsuarioTres();
-    Spinner numero;
+
     public RegistroUsuarioCuatro() {
         // Required empty public constructor
     }
@@ -46,25 +46,30 @@ public class RegistroUsuarioCuatro extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
+
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Digits.Builder digitsBuilder = new Digits.Builder().withTheme(R.style.CustomDigitsTheme);
         Fabric.with(getContext(), new TwitterCore(authConfig), digitsBuilder.build());
         Fabric.with(getContext(), new TwitterCore(authConfig), new Digits.Builder().build());
         View v=inflater.inflate(R.layout.fragment_registro_usuario_cuatro, container, false);
-
-
         digitsButton = (DigitsAuthButton) v.findViewById(R.id.auth_button);
+
         new Digits.Builder().withTheme(R.style.CustomDigitsTheme).build();
         digitsButton.setAuthTheme(R.style.CustomDigitsTheme);
+        Digits.clearActiveSession();
         digitsButton.setCallback(new AuthCallback() {
             @Override
             public void success(DigitsSession session, String phoneNumber) {
                 // TODO: associate the session userID with your user model
-                  ServRegistroUsuario registro=new ServRegistroUsuario();
-                  RequestCrearUsuario requestCrearUsuario = new RequestCrearUsuario("V"+((RegistroUsuario)getActivity()).registro.getCi(),((RegistroUsuario)getActivity()).registro.getPassword(),((RegistroUsuario)getActivity()).registro.getName(),((RegistroUsuario)getActivity()).registro.getPhone(),1,((RegistroUsuario)getActivity()).registro.getEmail(),"pasajero",null,null);
+               // Intent i = new Intent(getContext(), Login.class);
+               // startActivity(i);
+              //  ((RegistroUsuario)getActivity()).UltimoPaso();
+                 // ServRegistroUsuario registro=new ServRegistroUsuario();
+                 // RequestCrearUsuario requestCrearUsuario = new RequestCrearUsuario("V"+((RegistroUsuario)getActivity()).registro.getCi(),((RegistroUsuario)getActivity()).registro.getPassword(),((RegistroUsuario)getActivity()).registro.getName(),((RegistroUsuario)getActivity()).registro.getPhone(),1,((RegistroUsuario)getActivity()).registro.getEmail(),"pasajero",null,null);
                   Log.e("Datos de Registro", ":" +((RegistroUsuario)getActivity()).registro.toString());
-                  registro.registrarUsuario(requestCrearUsuario);
+                  //registro.registrarUsuario(requestCrearUsuario);
                 //Intent i = new Intent(getContext(), Login.class);
                // startActivity(i);
                   Toast.makeText(getContext(), "Usuario Registrado con Exito"
@@ -77,9 +82,22 @@ public class RegistroUsuarioCuatro extends Fragment {
             }
         });
         digitsButton.performClick();
-        authCallback = new AuthCallback() {
+      authCallback = new AuthCallback() {
             @Override
             public void success(DigitsSession session, String phoneNumber) {
+                  //    Intent i = new Intent(getContext(), UltimoPasoActivity.class);
+                  //    startActivity(i);
+
+               // ((RegistroUsuario)getActivity()).UltimoPaso();
+                 Intent i = new Intent(getContext(), UltimoPasoActivity.class);
+                 i.putExtra("nombre",((RegistroUsuario)getActivity()).registro.getName());
+                 i.putExtra("ci",((RegistroUsuario)getActivity()).registro.getCi());
+                 i.putExtra("password",((RegistroUsuario)getActivity()).registro.getPassword());
+                 i.putExtra("email",((RegistroUsuario)getActivity()).registro.getEmail());
+                 i.putExtra("phone",((RegistroUsuario)getActivity()).registro.getPhone());
+                 startActivity(i);
+
+                 Log.e("Datos de Registro", ":" +((RegistroUsuario)getActivity()).registro.toString());
 
                       }
             @Override

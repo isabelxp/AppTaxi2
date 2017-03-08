@@ -1,47 +1,34 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioTres">
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:srcCompat="@drawable/ic_checkflecha"
-        app:backgroundTint="@android:color/black"
-        app:layout_anchor="@+id/include"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_anchorGravity="bottom|right"
-        android:layout_gravity="bottom|right"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+
+
+      <android.support.design.widget.FloatingActionButton
+          android:id="@+id/fab"
+          android:layout_width="60dp"
+          android:layout_height="60dp"
+          app:srcCompat="@drawable/ic_checkflecha"
+          app:backgroundTint="@android:color/black"
+          android:layout_marginRight="30dp"
+          android:layout_marginBottom="30dp"
+          app:layout_anchorGravity="bottom|right"
+          android:layout_gravity="bottom|right"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentEnd="true"
+          />
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@drawable/fondo_perfil_usuario"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="62dp"
-            android:scaleType="fitXY"
-            android:id="@+id/imagefotousuario" />
-        <LinearLayout
-            android:layout_below="@id/imagefotousuario"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#E0E0E0"
-            android:id="@+id/linearLayout">
-        </LinearLayout>
-
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="92dp">
                   <Spinner
                    android:layout_width="60dp"
                    android:layout_height="60dp"
@@ -59,12 +46,11 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:ems="10"
-                android:textColorHint="@android:color/black"
+                android:textAppearance="@style/TextAppearance.FontPath"
                 android:backgroundTint="@android:color/black"
                 android:hint="Correo electronico"
                 android:textColor="@android:color/black"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="21dp"
                 android:id="@+id/editCorreo"
                 android:layout_below="@+id/linearLayout"
@@ -81,7 +67,8 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="20dp"
+                android:textAppearance="@style/TextAppearance.FontPath"
                 android:ems="10"
                 android:backgroundTint="@android:color/black"
                 android:hint="Contraseña"
@@ -94,9 +81,10 @@
         </android.support.design.widget.TextInputLayout>
 
         <EditText
-         android:layout_width="180dp"
+         android:layout_width="195dp"
          android:layout_height="wrap_content"
          android:inputType="number"
+            android:textSize="16dp"
          android:ems="10"
          android:textColor="@android:color/black"
          android:id="@+id/editnumerotelefo"
@@ -122,21 +110,12 @@
             android:layout_alignBottom="@+id/spinner2"
             android:layout_toStartOf="@+id/spinner2" />
 
-        <ImageView
-            android:layout_width="250dp"
-            android:layout_height="70dp"
-            android:background="@drawable/foto_option_transparente"
-            android:id="@+id/imageView4"
-            android:layout_above="@+id/linearLayout"
-            android:layout_alignStart="@+id/spinner2"
-            android:layout_marginStart="12dp"
-            android:layout_marginBottom="63dp" />
-
         <TextView
             android:text="SUBIR FOTOGRAFIA USUARIO"
             android:layout_width="wrap_content"
+            android:visibility="invisible"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/transparent"
             android:textSize="13dp"
             android:layout_marginTop="26dp"
             android:id="@+id/textView8"
@@ -144,7 +123,8 @@
             android:layout_marginEnd="65dp"
             android:layout_alignTop="@+id/imageView4"
             android:layout_alignParentEnd="true" />
+
     </RelativeLayout>
 
 
-</FrameLayout>
+</RelativeLayout>

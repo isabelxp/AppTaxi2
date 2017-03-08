@@ -13,6 +13,7 @@ import com.example.joseris.apptaxi.Modelos.Request.RequestCrearUsuario;
 import com.example.joseris.apptaxi.Modelos.Responses.Example;
 import com.example.joseris.apptaxi.Modelos.Responses.ResponseRegistroUsuario;
 import com.example.joseris.apptaxi.R;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,15 +44,16 @@ public boolean loginTrue;
                 .build();
 
         InterLogin service=retrofit.create(InterLogin.class);
-        Call<Example> call=service.ingresarLogin(requestlogindatos);
+        Call<Example> call=service.ingresarLogin (requestlogindatos);
         call.enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
 
                 if (response.isSuccessful()) {
                    // Log.e("Login", ":" + call.request().body());
-
-                    Log.e("Login Exito", ":" + response.body().getSuccess());
+                    Gson gson=new Gson();
+                    gson.toJson(response.body());
+                    Log.e("Login Exito", ":" +  gson.toJson(response.body()));
 
                 }else
                 {

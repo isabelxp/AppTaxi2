@@ -17,6 +17,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class ServRegistroUsuario {
+    public boolean registroExitoso;
+
+    public boolean isRegistroExitoso() {
+        return registroExitoso;
+    }
+
+    public void setRegistroExitoso(boolean registroExitoso) {
+        this.registroExitoso = registroExitoso;
+    }
 
     public void registrarUsuario(RequestCrearUsuario requestCrearUsuario)
     {
@@ -32,19 +41,24 @@ public class ServRegistroUsuario {
             public void onResponse(Call<ResponseRegistroUsuario> call, Response<ResponseRegistroUsuario> response) {
 
                 if (response.isSuccessful()) {
+                    setRegistroExitoso(true);
                     Log.e("Registro", ":" + call.request().url().toString());
                 }else
                 {
-                   Log.e("No Registro", "------");
-
+                    setRegistroExitoso(false);
+                    Log.e("No Registro__usuario", "------");
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseRegistroUsuario> call, Throwable t) {
+               // setRegistroExitoso(false);
                 Log.e("Error base datos", "------"+ t);
             }
         });
 
     }
+
+
+
+
 }

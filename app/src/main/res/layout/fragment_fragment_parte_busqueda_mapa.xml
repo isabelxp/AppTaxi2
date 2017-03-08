@@ -72,6 +72,7 @@
            android:drawableRight="@drawable/ic_relojir"
            android:background="@android:color/white"
            android:text="      ¿A donde quieres ir?"
+           android:textAppearance="@style/TextAppearance.FontPath"
            android:shadowDy="6"
            android:shadowRadius="1.2"
            android:drawableLeft="@drawable/ic_ir"

@@ -22,18 +22,21 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launchertaxi"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name="android.support.multidex.MultiDexApplication"
         android:theme="@style/AppTheme">
+
         <!-- if you want to load images from a file OR from the internet -->
 
         <activity
             android:name=".Login"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,10 +44,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistroUsuario" />
+        <activity
+            android:name=".RegistroUsuario"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".FragmnetsRegistroUsuario.Actividad_principalTaxi"
             android:label="@string/title_activity_actividad_principal_taxi"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
         <!--
@@ -55,14 +61,17 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/. 
         -->
-        <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC2ZShkqodjiNmjGA2w1mXapDoF-aD5nzI"/>
-
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC2ZShkqodjiNmjGA2w1mXapDoF-aD5nzI" />
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="b5448395b8700d36823f61cc6f74c065dfff09e4"
-            />
+            android:value="b5448395b8700d36823f61cc6f74c065dfff09e4" />
 
+        <activity
+            android:name=".UltimoPasoActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".RecuperarContrasenaUsuario"></activity>
     </application>
 
 </manifest>

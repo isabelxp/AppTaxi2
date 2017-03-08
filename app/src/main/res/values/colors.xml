@@ -2,5 +2,7 @@
 <resources>
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#212121</color>
-    <color name="colorAccent">#212121</color>
+    <color name="colorAccent">#ef212121</color>
+    <color name="colorletra">#868686</color>
+    <color name="colorcarta">#f5f6f6</color>
 </resources>

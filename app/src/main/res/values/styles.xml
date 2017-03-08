@@ -22,7 +22,18 @@
         <item name="behavior_hideable">true</item>
         <item name="behavior_skipCollapsed">true</item>
     </style>
-
+    <style name="TextAppearance.FontPath" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">font/Roboto-Light.ttf</item>
+    </style>
+    <style name="TextAppearance.FontPathMedium" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">font/Roboto-Medium.ttf</item>
+    </style>
+    <style name="TextAppearance.FontPathRegular" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">font/Roboto-Regular.ttf</item>
+    </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -36,6 +47,7 @@
         <item name="android:textColorPrimary">@android:color/black</item>
         <item name="android:textColorSecondary">@android:color/darker_gray</item>
         <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:spinnerStyle">@android:color/white</item>
         <item name="android:textColorLink">#ff398622</item>
         <item name="dgts__accentColor">@android:color/black</item>
     </style>

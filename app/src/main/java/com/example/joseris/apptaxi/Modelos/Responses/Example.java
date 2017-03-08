@@ -13,7 +13,7 @@ public class Example {
     private String success;
     @SerializedName("account")
     @Expose
-    private Account account;
+    private Object account;
 
     public String getSuccess() {
         return success;
@@ -23,11 +23,11 @@ public class Example {
         this.success = success;
     }
 
-    public Account getAccount() {
+    public Object getAccount() {
         return account;
     }
 
-    public void setAccount(Account account) {
+    public void setAccount(Object account) {
         this.account = account;
     }
 

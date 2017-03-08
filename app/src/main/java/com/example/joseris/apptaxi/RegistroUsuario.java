@@ -2,6 +2,7 @@ package com.example.joseris.apptaxi;
 
 import android.*;
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -16,10 +17,15 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.ConfirmarFoto;
+import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.FotografiaUsuario;
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioCuatro;
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioDos;
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioTres;
 import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.RegistroUsuarioUno;
+import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.UltimoPaso;
+import com.example.joseris.apptaxi.FragmnetsRegistroUsuario.UsuarioNoRegistradoCNE;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class RegistroUsuario extends AppCompatActivity {
@@ -47,10 +53,14 @@ public class RegistroUsuario extends AppCompatActivity {
     }
 
     public RegistroUsuarioUno fragment1 = new RegistroUsuarioUno();
+    public UltimoPaso ultimopaso=new UltimoPaso();
+    public FotografiaUsuario fotousuario =new FotografiaUsuario();
     public RegistroUsuarioDos frgment2 = new RegistroUsuarioDos();
     public RegistroUsuarioTres frgment3 = new RegistroUsuarioTres();
     public RegistroUsuarioCuatro frgment4 = new RegistroUsuarioCuatro();
     public ConfirmarFoto confirmarfotoregistro2= new ConfirmarFoto();
+    public UsuarioNoRegistradoCNE usuarionoregistradocne= new UsuarioNoRegistradoCNE();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +75,7 @@ public class RegistroUsuario extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        // getSupportActionBar().setTitle("Registro de usuario");
 
-        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_more_vert));
+         toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_more_vert_black_24dp));
         toolbar.setTitle("Registro de usuario");
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorAccent));
 
@@ -75,7 +85,7 @@ public class RegistroUsuario extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(RegistroUsuario.this, "hola", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegistroUsuario.this, "", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -101,12 +111,16 @@ public class RegistroUsuario extends AppCompatActivity {
     private void action(int resid) {
         Toast.makeText(this, getText(resid), Toast.LENGTH_SHORT).show();
     }
-
+    public void onBackPressed() { }
     public void Registrouno()
     {
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container2, fragment1).commit();
+    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
     public void RegistroDos()
     {
@@ -137,6 +151,11 @@ public class RegistroUsuario extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container2, confirmarfotoregistro2).commit();
     }
+    public void UltimoPaso()
+    {
+       // finish();
+    }
+
     public void RegistroConfirmarFoto()
     {
         getSupportFragmentManager().beginTransaction()
@@ -148,7 +167,22 @@ public class RegistroUsuario extends AppCompatActivity {
                 .add(R.id.fragment_container2, frgment2).commit();
 
     }
+    public void UltimoPasoFragmentFotoUsuario()
+    {
+        getSupportFragmentManager().beginTransaction()
+                .remove(fotousuario).commit();
 
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container2, ultimopaso).commit();
+    }
+    public void UltimoPasoFragmentCedula()
+    {
+        getSupportFragmentManager().beginTransaction()
+                .remove(frgment2).commit();
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container2, ultimopaso).commit();
+    }
 
     public void RegistroCuatro()
     {
@@ -160,6 +194,30 @@ public class RegistroUsuario extends AppCompatActivity {
                 .replace(R.id.fragment_container2, frgment4).commit();
         overridePendingTransition(R.anim.left_in,R.anim.left_out);
     }
+    public void RegistroUsuarioNoRegistrado()
+    {
+        getSupportFragmentManager().beginTransaction()
+                .remove(fragment1).commit();
+
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.left_in, R.anim.left_out)
+                .replace(R.id.fragment_container2, usuarionoregistradocne).commit();
+        overridePendingTransition(R.anim.left_in,R.anim.left_out);
+    }
+    public void fotousuario()
+    {
+        getSupportFragmentManager().beginTransaction()
+                .remove(ultimopaso).commit();
+
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.left_in, R.anim.left_out)
+                .replace(R.id.fragment_container2, fotousuario).commit();
+        overridePendingTransition(R.anim.left_in,R.anim.left_out);
+
+    }
+
+
+
 
     public void permisos()
     {

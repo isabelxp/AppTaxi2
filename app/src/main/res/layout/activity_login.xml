@@ -34,6 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.FontPath"
             android:text="Bienvenido, disfruta tu vieje"
             android:textSize="22dp"
             android:layout_marginLeft="40dp"
@@ -44,6 +45,7 @@
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
+            android:textAppearance="@style/TextAppearance.FontPathRegular"
             android:singleLine="true"
             android:id="@+id/editemaillogin"
             android:backgroundTint="@android:color/black"
@@ -53,6 +55,7 @@
         <EditText
             android:layout_width="290dp"
             android:id="@+id/editpasswordlogin"
+            android:textAppearance="@style/TextAppearance.FontPathRegular"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:singleLine="true"
@@ -72,15 +75,18 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_marginTop="17dp"
+             android:id="@+id/textrecupearacontrasena"
+             android:textAppearance="@style/TextAppearance.FontPath"
              android:layout_marginLeft="30dp"
              android:textSize="16dp"
              android:textColor="#0277BD"
-             android:text="Olvide mi contraseña"/>
+             android:text="Olvidé mi contraseña"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
             android:id="@+id/textregistro"
+            android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="#0277BD"
             android:textSize="16dp"
             android:layout_marginLeft="30dp"
@@ -94,15 +100,17 @@
         android:id="@+id/fab"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:srcCompat="@drawable/ic_checkmark"
-        app:backgroundTint="@android:color/black"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|right"
         android:layout_gravity="top|left"
         android:layout_marginBottom="20dp"
         android:layout_margin="30dp"
         android:layout_marginRight="@dimen/fab_margin"
-         />
+        app:srcCompat="@drawable/ic_checkmark"
+        app:backgroundTint="@android:color/black"
+        />
+
+
 
     <include layout="@layout/content_login"
         android:id="@+id/include" />

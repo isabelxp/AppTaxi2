@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_recuperar_contrasena_usuario"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.example.joseris.apptaxi.RecuperarContrasenaUsuario">
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    >
+    <TextView
+        android:text="Ingresa el correo electronico utilizado en tu registro"
+        android:textSize="23dp"
+        android:textAppearance="@style/TextAppearance.FontPathRegular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
+        android:id="@+id/textView7"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="?android:attr/textColorSecondary" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_close"
+        android:id="@+id/imageX"
+        android:visibility="invisible"
+        android:layout_alignBottom="@+id/editRecuperarCont"
+        android:layout_toRightOf="@+id/editRecuperarCont"
+        />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="nombre@ejemplo.com"
+            android:ems="12"
+            android:singleLine="true"
+            android:layout_marginTop="39dp"
+            android:id="@+id/editRecuperarCont"
+            android:layout_below="@+id/textView7"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Correo electrónico no asociado con tu numero movil."
+            android:visibility="invisible"
+            android:textSize="10dp"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textError"
+            android:layout_below="@+id/editRecuperarCont"
+            android:layout_toStartOf="@+id/imageX"
+            android:layout_marginEnd="10dp" />
+
+
+    </RelativeLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+        app:popupTheme="@style/Theme.AppCompat.Light"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:ignore="UnusedAttribute"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@+id/include"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        app:layout_anchorGravity="bottom|right"
+        android:layout_gravity="bottom|right"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        >
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/ic_checkflecha"
+            app:backgroundTint="@android:color/black"
+            />
+
+
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_ultimo_paso"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="match_parent"
+    tools:context="com.example.joseris.apptaxi.UltimoPasoActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:textAppearance="@style/TextAppearance.FontPathRegular"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+        app:popupTheme="@style/Theme.AppCompat.Light"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:ignore="UnusedAttribute"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/ic_checkmark"
+        app:backgroundTint="@android:color/black"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="bottom|right"
+        android:layout_gravity="top|left"
+        android:layout_marginBottom="34dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="31dp" />
+
+    <TextView
+        android:padding="16dp"
+        android:text="Nos tomamos muy enserio la seguridad, es por ello que te pedimos que subas los documentos que se te piden a continuacion para validar la autenticidad de tus datos.  "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textAppearance="@style/TextAppearance.FontPathRegular"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2" />
+
+    <TextView
+        android:padding="16dp"
+        android:text="Los conductores se sentiran mas mas seguros sabiendo que no usaras datos falsos para solicitar servicios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="?android:attr/textColorSecondary"
+        android:id="@+id/textView10"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+    <LinearLayout
+        android:layout_below="@id/textView10"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#E0E0E0"
+        android:id="@+id/linearLayout">
+    </LinearLayout>
+
+    <TextView
+        android:text="Fotografia de tu perfil"
+        android:textSize="15dp"
+        android:paddingLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:textAppearance="@style/TextAppearance.FontPathRegular"
+        android:layout_marginTop="17dp"
+        android:id="@+id/textViewFotoPerfil"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_below="@id/textViewFotoPerfil"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#E0E0E0"
+        android:id="@+id/linearLayou1t">
+    </LinearLayout>
+
+    <TextView
+        android:text="Fotografia de tu Cedula de Identidad"
+        android:textSize="15dp"
+        android:paddingLeft="10dp"
+        android:layout_width="wrap_content"
+        android:textAppearance="@style/TextAppearance.FontPathRegular"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayou1t"
+        android:layout_alignStart="@+id/textViewFotoPerfil"
+        android:layout_marginTop="16dp"
+        android:id="@+id/textViewCedulaIdentidad"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_below="@id/textViewCedulaIdentidad"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#E0E0E0"
+        android:id="@+id/linearLayou1t2">
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_action_done"
+        android:layout_alignTop="@+id/textViewFotoPerfil"
+        android:layout_alignStart="@+id/fab"
+        android:id="@+id/imageFoto" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_below="@+id/linearLayou1t"
+        app:srcCompat="@drawable/ic_action_done"
+        android:layout_alignTop="@+id/textViewCedulaIdentidad"
+        android:layout_alignEnd="@+id/imageFoto"
+        android:id="@+id/imageCedula" />
+
+    <TextView
+        android:paddingLeft="20dp"
+        android:textSize="12dp"
+        android:text="Al continuar, confirmo que lei y acepto los
+Terminos y condiciones y la Politica
+ de privacidad. "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.FontPathRegular"
+        android:id="@+id/textView13"
+        android:layout_below="@+id/linearLayou1t2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="13dp" />
+
+    <TextView
+        android:text="Sube tus documentos para validacion"
+        android:textSize="27dp"
+        android:textAppearance="@style/TextAppearance.FontPath"
+        android:padding="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <RelativeLayout
+        android:id="@+id/fragment_container2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+    </RelativeLayout>
+</RelativeLayout>

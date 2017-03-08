@@ -25,12 +25,16 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.joseris.apptaxi.Modelos.Request.RequestCrearUsuario;
 import com.example.joseris.apptaxi.R;
 import com.example.joseris.apptaxi.RegistroUsuario;
+import com.example.joseris.apptaxi.Servicios.ServRegistroUsuario;
+import com.example.joseris.apptaxi.UltimoPasoActivity;
 import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder;
 import com.github.rubensousa.bottomsheetbuilder.BottomSheetMenuDialog;
 import com.github.rubensousa.bottomsheetbuilder.adapter.BottomSheetItemClickListener;
@@ -44,6 +48,7 @@ import static com.example.joseris.apptaxi.R.id.fab;
 
 
 public class RegistroUsuarioDos extends Fragment {
+    Button botonfoto;
     public ImageView imagencedu;
     private static final int REQUEST_FOR_PERMISSION = 1;
     TextView TextFoto;
@@ -80,37 +85,27 @@ public class RegistroUsuarioDos extends Fragment {
         View v=inflater.inflate(R.layout.fragment_registro_usuario_dos, container, false);
         TextFoto = (TextView) v.findViewById(R.id.textView4);
         imagencedu = (ImageView) v.findViewById(R.id.imagecedula);
+        botonfoto=(Button) v.findViewById(R.id.buttonfoto);
+
         String font_path = "font/Roboto-Light.ttf";
 
-        if(((RegistroUsuario)getActivity()).getImagencedulabig()!=null)
-        {
-            imagencedu.setImageBitmap(((RegistroUsuario)getActivity()).getImagencedulabig());
-        }
+
 
 
         Typeface TF = Typeface.createFromAsset(getContext().getAssets(),font_path);
         TextFoto.setTypeface(TF);
-        imagencedu.setOnClickListener(new View.OnClickListener() {
+        botonfoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onShowOpcionesdepago();
-                //((RegistroUsuario)getActivity()).RegistrodosOpcionCamaraFoto();
+
             }
         });
 
 
 
-        FloatingActionButton botonchck=(FloatingActionButton) v.findViewById(fab);
 
-        botonchck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(fotoTomada==true)
-                {
-                    ((RegistroUsuario)getActivity()).RegistroTres();
-                }
-            }
-        });
+
 
         return v;
     }
@@ -134,9 +129,6 @@ public class RegistroUsuarioDos extends Fragment {
                         if (id == R.id.camara) {
                             //((RegistroUsuario)getActivity()).permisos();
                             Fotografia();
-
-
-
                             Log.e("Item click1", ":");
                         }else
                         if (id == R.id.galeria) {
@@ -210,10 +202,9 @@ public class RegistroUsuarioDos extends Fragment {
                 is =  getActivity().getApplicationContext().getContentResolver().openInputStream(selectedImage);
                 BufferedInputStream bis = new BufferedInputStream(is);
                 Bitmap bitmap = BitmapFactory.decodeStream(bis);
+                ((UltimoPasoActivity)getActivity()).removerFragmenCedula();
                 imagencedu.setImageBitmap(bitmap);
                 fotoTomada=true;
-                ((RegistroUsuario)getActivity()).setImagencedulabig(bitmap);
-                ((RegistroUsuario)getActivity()).RegistrodosOpcionCamaraFoto();
             } catch (FileNotFoundException e) {}
         }else
         if (requestCode == TAKE_PICTURE){
@@ -229,12 +220,25 @@ public class RegistroUsuarioDos extends Fragment {
             }
             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
             Drawable d = new BitmapDrawable(getResources(), myBitmap);
+            ((UltimoPasoActivity)getActivity()).removerFragmenCedula();
             imagencedu.setImageBitmap(myBitmap);
             fotoTomada=true;
-            ((RegistroUsuario)getActivity()).setImagencedulabig(myBitmap);
-            ((RegistroUsuario)getActivity()).RegistrodosOpcionCamaraFoto();
         }
 
+    }
+
+
+    public boolean registroUsuario()
+    {
+
+        ServRegistroUsuario registro=new ServRegistroUsuario();
+        RequestCrearUsuario requestCrearUsuario = new RequestCrearUsuario("V"+((RegistroUsuario)getActivity()).registro.getCi(), ((RegistroUsuario)getActivity()).registro.getPassword(),((RegistroUsuario)getActivity()).registro.getName(),((RegistroUsuario)getActivity()).registro.getPhone(),1,((RegistroUsuario)getActivity()).registro.getEmail(),"pasajero",null,null);
+        registro.registrarUsuario(requestCrearUsuario);
+        Log.e("Datos Registrfragment ", "------" +((RegistroUsuario)getActivity()).registro.toString());
+        if(registro.isRegistroExitoso()==true)
+            return true;
+        else
+            return false;
     }
 
 
