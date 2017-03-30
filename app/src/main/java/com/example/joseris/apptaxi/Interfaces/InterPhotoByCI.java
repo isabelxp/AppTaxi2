@@ -16,4 +16,5 @@ public interface InterPhotoByCI {
             @Path("ci") String ci,
             @Path("size") Integer size
     );
+
 }

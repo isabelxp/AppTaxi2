@@ -47,3 +47,22 @@ RequestCambiarPass requestCambiarPass = new RequestCambiarPass(
 );
 ServCambiarPass cambiar = new ServCambiarPass(requestCambiarPass);
 ```
+
+- Validar si una cedula existe
+
+Opcion 1
+```java
+new ServExisteCedula("V12345"){
+    @Override
+    public void onDone() { //Cuando reciba la respuesta
+      /*Tu logica*/
+      boolean var = exist(); //exist devuelve True o False en caso de que exista o no
+    }
+};
+```
+
+Opcion 2
+```java
+ServExisteCedula serv = new ServExisteCedula("V12345");
+serv.exist();
+```

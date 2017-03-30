@@ -6,6 +6,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import com.example.joseris.apptaxi.Modelos.Request.RequesLoginDatos;
 import com.example.joseris.apptaxi.Modelos.Request.RequestCambiarPass;
 import com.example.joseris.apptaxi.Modelos.Request.RequestCrearUsuario;
 import com.example.joseris.apptaxi.Servicios.ServCambiarPass;
+import com.example.joseris.apptaxi.Servicios.ServExisteCedula;
 import com.example.joseris.apptaxi.Servicios.ServRegistroUsuario;
 import com.example.joseris.apptaxi.Servicios.ServicioLogin;
 
